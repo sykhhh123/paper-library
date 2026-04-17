@@ -175,20 +175,14 @@ function setup(items) {
     dateToDisplay.placeholder = dateTo.value ? '' : '点击选择日期';
   }
 
-  function syncPresetState() {
-    const useCustomRange = hasCustomRange(dateFrom.value, dateTo.value);
-    datePresetFilter.disabled = useCustomRange;
-  }
-
   function update() {
-    syncPresetState();
     syncDisplays();
 
     const query = searchInput.value.trim();
     const type = typeFilter.value;
     const category = categoryFilter.value;
     const sortBy = sortSelect.value;
-    const presetValue = datePresetFilter.disabled ? '' : datePresetFilter.value;
+    const presetValue = datePresetFilter.value;
     const fromValue = dateFrom.value;
     const toValue = dateTo.value;
 
@@ -207,9 +201,25 @@ function setup(items) {
   typeFilter.addEventListener('change', update);
   categoryFilter.addEventListener('change', update);
   sortSelect.addEventListener('change', update);
-  datePresetFilter.addEventListener('change', update);
-  dateFrom.addEventListener('change', update);
-  dateTo.addEventListener('change', update);
+  datePresetFilter.addEventListener('change', () => {
+    if (datePresetFilter.value) {
+      dateFrom.value = '';
+      dateTo.value = '';
+    }
+    update();
+  });
+  dateFrom.addEventListener('change', () => {
+    if (dateFrom.value || dateTo.value) {
+      datePresetFilter.value = '';
+    }
+    update();
+  });
+  dateTo.addEventListener('change', () => {
+    if (dateFrom.value || dateTo.value) {
+      datePresetFilter.value = '';
+    }
+    update();
+  });
 
   update();
 }
