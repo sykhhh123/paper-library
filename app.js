@@ -200,6 +200,8 @@ function setup(items) {
     syncDateModeFromPreset();
     update();
   });
+  dateFrom.addEventListener('input', switchToCustomIfNeeded);
+  dateTo.addEventListener('input', switchToCustomIfNeeded);
   dateFrom.addEventListener('change', switchToCustomIfNeeded);
   dateTo.addEventListener('change', switchToCustomIfNeeded);
 
