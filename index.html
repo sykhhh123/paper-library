@@ -65,12 +65,18 @@
           </select>
         </div>
         <div>
-          <label class="control-label" for="dateFrom">开始日期</label>
-          <input id="dateFrom" type="date" />
+          <label class="control-label">开始日期</label>
+          <button id="dateFromButton" class="date-trigger" type="button" disabled>
+            <span id="dateFromText">选择开始日期</span>
+          </button>
+          <input id="dateFrom" class="date-native-input" type="date" />
         </div>
         <div>
-          <label class="control-label" for="dateTo">结束日期</label>
-          <input id="dateTo" type="date" />
+          <label class="control-label">结束日期</label>
+          <button id="dateToButton" class="date-trigger" type="button" disabled>
+            <span id="dateToText">选择结束日期</span>
+          </button>
+          <input id="dateTo" class="date-native-input" type="date" />
         </div>
       </div>
     </section>

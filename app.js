@@ -61,6 +61,11 @@ function getItemDate(item) {
   return parseDate(item.date_published || item.sort_timestamp || item.added_at || '');
 }
 
+function formatDateLabel(value, fallback) {
+  if (!value) return fallback;
+  return value;
+}
+
 function matchesDate(item, presetValue, fromValue, toValue) {
   const itemDate = getItemDate(item);
   if (!itemDate) return !presetValue && !fromValue && !toValue;
@@ -139,6 +144,10 @@ function setup(items) {
   const datePresetFilter = document.getElementById('datePresetFilter');
   const dateFrom = document.getElementById('dateFrom');
   const dateTo = document.getElementById('dateTo');
+  const dateFromButton = document.getElementById('dateFromButton');
+  const dateToButton = document.getElementById('dateToButton');
+  const dateFromText = document.getElementById('dateFromText');
+  const dateToText = document.getElementById('dateToText');
 
   uniqueTypes(items).forEach(type => {
     const option = document.createElement('option');
@@ -153,6 +162,11 @@ function setup(items) {
     option.textContent = category;
     categoryFilter.appendChild(option);
   });
+
+  function updateDateTexts() {
+    dateFromText.textContent = formatDateLabel(dateFrom.value, '选择开始日期');
+    dateToText.textContent = formatDateLabel(dateTo.value, '选择结束日期');
+  }
 
   function update() {
     const query = searchInput.value.trim();
@@ -178,10 +192,23 @@ function setup(items) {
     const isCustom = datePresetFilter.value === 'custom';
     dateFrom.disabled = !isCustom;
     dateTo.disabled = !isCustom;
+    dateFromButton.disabled = !isCustom;
+    dateToButton.disabled = !isCustom;
     if (!isCustom) {
       dateFrom.value = '';
       dateTo.value = '';
     }
+    updateDateTexts();
+  }
+
+  function openPicker(input) {
+    if (input.disabled) return;
+    if (typeof input.showPicker === 'function') {
+      input.showPicker();
+      return;
+    }
+    input.focus();
+    input.click();
   }
 
   function switchToCustomIfNeeded() {
@@ -200,8 +227,17 @@ function setup(items) {
     syncDateModeFromPreset();
     update();
   });
-  dateFrom.addEventListener('change', switchToCustomIfNeeded);
-  dateTo.addEventListener('change', switchToCustomIfNeeded);
+
+  dateFromButton.addEventListener('click', () => openPicker(dateFrom));
+  dateToButton.addEventListener('click', () => openPicker(dateTo));
+  dateFrom.addEventListener('change', () => {
+    updateDateTexts();
+    switchToCustomIfNeeded();
+  });
+  dateTo.addEventListener('change', () => {
+    updateDateTexts();
+    switchToCustomIfNeeded();
+  });
 
   syncDateModeFromPreset();
   update();
