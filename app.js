@@ -151,6 +151,8 @@ function setup(items) {
   const datePresetFilter = document.getElementById('datePresetFilter');
   const dateFrom = document.getElementById('dateFrom');
   const dateTo = document.getElementById('dateTo');
+  const dateFromDisplay = document.getElementById('dateFromDisplay');
+  const dateToDisplay = document.getElementById('dateToDisplay');
 
   uniqueTypes(items).forEach(type => {
     const option = document.createElement('option');
@@ -166,6 +168,13 @@ function setup(items) {
     categoryFilter.appendChild(option);
   });
 
+  function syncDisplays() {
+    dateFromDisplay.value = dateFrom.value || '';
+    dateToDisplay.value = dateTo.value || '';
+    dateFromDisplay.placeholder = dateFrom.value ? '' : '点击选择日期';
+    dateToDisplay.placeholder = dateTo.value ? '' : '点击选择日期';
+  }
+
   function syncPresetState() {
     const useCustomRange = hasCustomRange(dateFrom.value, dateTo.value);
     datePresetFilter.disabled = useCustomRange;
@@ -173,6 +182,7 @@ function setup(items) {
 
   function update() {
     syncPresetState();
+    syncDisplays();
 
     const query = searchInput.value.trim();
     const type = typeFilter.value;
@@ -198,8 +208,6 @@ function setup(items) {
   categoryFilter.addEventListener('change', update);
   sortSelect.addEventListener('change', update);
   datePresetFilter.addEventListener('change', update);
-  dateFrom.addEventListener('input', update);
-  dateTo.addEventListener('input', update);
   dateFrom.addEventListener('change', update);
   dateTo.addEventListener('change', update);
 
