@@ -61,14 +61,33 @@ function getItemDate(item) {
   return parseDate(item.date_published || item.sort_timestamp || item.added_at || '');
 }
 
+function hasCustomRange(fromValue, toValue) {
+  return Boolean(fromValue || toValue);
+}
+
 function matchesDate(item, presetValue, fromValue, toValue) {
   const itemDate = getItemDate(item);
-  if (!itemDate) return !presetValue && !fromValue && !toValue;
+  const useCustomRange = hasCustomRange(fromValue, toValue);
+
+  if (!itemDate) {
+    return !presetValue && !fromValue && !toValue;
+  }
+
+  if (useCustomRange) {
+    const fromDate = parseDate(fromValue);
+    const toDate = parseDate(toValue);
+    if (fromDate && itemDate < fromDate) return false;
+    if (toDate) {
+      toDate.setHours(23, 59, 59, 999);
+      if (itemDate > toDate) return false;
+    }
+    return true;
+  }
 
   const today = new Date();
   today.setHours(23, 59, 59, 999);
 
-  if (presetValue && presetValue !== 'custom') {
+  if (presetValue) {
     const days = Number(presetValue);
     if (!Number.isFinite(days)) return true;
     const start = new Date(today);
@@ -77,13 +96,6 @@ function matchesDate(item, presetValue, fromValue, toValue) {
     return itemDate >= start && itemDate <= today;
   }
 
-  const fromDate = parseDate(fromValue);
-  const toDate = parseDate(toValue);
-  if (fromDate && itemDate < fromDate) return false;
-  if (toDate) {
-    toDate.setHours(23, 59, 59, 999);
-    if (itemDate > toDate) return false;
-  }
   return true;
 }
 
@@ -154,12 +166,19 @@ function setup(items) {
     categoryFilter.appendChild(option);
   });
 
+  function syncPresetState() {
+    const useCustomRange = hasCustomRange(dateFrom.value, dateTo.value);
+    datePresetFilter.disabled = useCustomRange;
+  }
+
   function update() {
+    syncPresetState();
+
     const query = searchInput.value.trim();
     const type = typeFilter.value;
     const category = categoryFilter.value;
     const sortBy = sortSelect.value;
-    const presetValue = datePresetFilter.value;
+    const presetValue = datePresetFilter.disabled ? '' : datePresetFilter.value;
     const fromValue = dateFrom.value;
     const toValue = dateTo.value;
 
@@ -174,38 +193,16 @@ function setup(items) {
     render(sortItems(filtered, sortBy));
   }
 
-  function syncDateModeFromPreset() {
-    const isCustom = datePresetFilter.value === 'custom';
-    dateFrom.disabled = !isCustom;
-    dateTo.disabled = !isCustom;
-    if (!isCustom) {
-      dateFrom.value = '';
-      dateTo.value = '';
-    }
-  }
-
-  function switchToCustomIfNeeded() {
-    if (dateFrom.value || dateTo.value) {
-      datePresetFilter.value = 'custom';
-    }
-    syncDateModeFromPreset();
-    update();
-  }
-
   searchInput.addEventListener('input', update);
   typeFilter.addEventListener('change', update);
   categoryFilter.addEventListener('change', update);
   sortSelect.addEventListener('change', update);
-  datePresetFilter.addEventListener('change', () => {
-    syncDateModeFromPreset();
-    update();
-  });
-  dateFrom.addEventListener('input', switchToCustomIfNeeded);
-  dateTo.addEventListener('input', switchToCustomIfNeeded);
-  dateFrom.addEventListener('change', switchToCustomIfNeeded);
-  dateTo.addEventListener('change', switchToCustomIfNeeded);
+  datePresetFilter.addEventListener('change', update);
+  dateFrom.addEventListener('input', update);
+  dateTo.addEventListener('input', update);
+  dateFrom.addEventListener('change', update);
+  dateTo.addEventListener('change', update);
 
-  syncDateModeFromPreset();
   update();
 }
 
