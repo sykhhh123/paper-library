@@ -45,5 +45,54 @@
     "added_at": "2026-04-17",
     "sort_timestamp": "2026-04-16",
     "notes": "当前收录源为官方博客首发文章；页面中提到附带 π0.7 pdf，但当前未单独解析 PDF 文件。"
+  },
+  {
+    "id": "zero-shot-world-models-developmentally-efficient-learners",
+    "type": "paper",
+    "title": "Zero-shot World Models Are Developmentally Efficient Learners",
+    "authors": [
+      "Khai Loong Aw",
+      "Klemen Kotar",
+      "Wanhee Lee",
+      "Seungwoo Kim",
+      "Khaled Jedoui",
+      "Rahul Venkatesh",
+      "Lilian Naing Chen",
+      "Michael C. Frank",
+      "Daniel L.K. Yamins"
+    ],
+    "year": 2026,
+    "date_published": "2026",
+    "venue": "Stanford University",
+    "categories": [
+      "World Models",
+      "Developmental Learning",
+      "Physical Reasoning"
+    ],
+    "keywords": [
+      "zero-shot world model",
+      "ZWM",
+      "developmental learning",
+      "data-efficient learning",
+      "physical understanding",
+      "causal inference",
+      "child development",
+      "brain-like representations"
+    ],
+    "abstract": "Young children demonstrate early abilities to understand their physical world, estimating depth, motion, object coherence, interactions, and many other aspects of physical scene understanding. Children are both data-efficient and flexible cognitive systems, creating competence despite extremely limited training data, while generalizing to myriad untrained tasks — a major challenge even for today's best AI systems. Here we introduce a novel computational hypothesis for these abilities, the Zero-shot Visual World Model (ZWM). ZWM is based on three principles: a sparse temporally-factored predictor that decouples appearance from dynamics; zero-shot estimation through approximate causal inference; and composition of inferences to build more complex abilities. We show that ZWM can be learned from the first-person experience of a single child, rapidly generating competence across multiple physical understanding benchmarks. It also broadly recapitulates behavioral signatures of child development and builds brain-like internal representations. Our work presents a blueprint for efficient and flexible learning from human-scale data, advancing both a computational account for children's early physical understanding and a path toward data-efficient AI systems.",
+    "summary": "这篇工作提出 Zero-shot Visual World Model（ZWM），试图解释儿童为何能在极少数据下快速形成对物理世界的理解，并把这种能力转化为数据高效的 AI 学习范式。作者的核心观点是，儿童式的高效学习并不依赖大规模监督，而是依赖一种把外观与动力学解耦、能够进行近似因果推断、并能组合多个推断结果的世界模型。论文声称，仅从单个儿童的一人称经验中，ZWM 就能在多个物理理解基准上快速获得能力，同时复现儿童发展的若干行为特征，并形成类脑内部表征。",
+    "innovations": [
+      "提出 Zero-shot Visual World Model（ZWM），将儿童早期物理理解建模为零样本世界模型学习问题。",
+      "使用稀疏、时间分解的预测器，将视觉外观与场景动力学解耦。",
+      "把近似因果推断作为零样本估计机制，用于从有限经验中生成可迁移能力。",
+      "通过组合多个推断结果来构建更复杂的物理认知能力。",
+      "强调可从人类尺度数据中实现高效、灵活学习，并与儿童发展行为和类脑表征建立联系。"
+    ],
+    "source_url": "",
+    "canonical_url": "",
+    "pdf_url": "",
+    "added_at": "2026-04-17",
+    "sort_timestamp": "2026",
+    "notes": "当前条目依据用户转发截图整理，尚未附带论文链接；发布日期与链接字段后续可在拿到原始链接时补全。"
   }
 ]
