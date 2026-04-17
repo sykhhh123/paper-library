@@ -95,6 +95,10 @@ body {
   margin-top: 28px;
 }
 
+.hero-metrics.feature-only {
+  grid-template-columns: minmax(0, 420px);
+}
+
 .metric-card {
   padding: 16px 18px;
   border: 1px solid var(--line);
@@ -133,8 +137,16 @@ body {
 
 .filters-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
+}
+
+.filters-grid-main {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.filters-grid-time {
+  grid-template-columns: 1.1fr 1fr 1fr;
+  margin-top: 14px;
 }
 
 input, select {
@@ -155,6 +167,11 @@ input::placeholder {
 input:focus, select:focus {
   border-color: rgba(125, 211, 252, 0.55);
   box-shadow: 0 0 0 4px rgba(125, 211, 252, 0.12);
+}
+
+input:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 
 .result-head {
@@ -286,8 +303,9 @@ ul {
 }
 
 @media (max-width: 900px) {
-  .hero-metrics,
-  .filters-grid {
+  .hero-metrics.feature-only,
+  .filters-grid-main,
+  .filters-grid-time {
     grid-template-columns: 1fr;
   }
 

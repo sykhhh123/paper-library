@@ -51,6 +51,42 @@ function escapeHtml(value) {
     .replaceAll("'", '&#39;');
 }
 
+function parseDate(value) {
+  if (!value) return null;
+  const d = new Date(`${value}T00:00:00`);
+  return Number.isNaN(d.getTime()) ? null : d;
+}
+
+function getItemDate(item) {
+  return parseDate(item.date_published || item.sort_timestamp || item.added_at || '');
+}
+
+function matchesDate(item, presetValue, fromValue, toValue) {
+  const itemDate = getItemDate(item);
+  if (!itemDate) return !presetValue && !fromValue && !toValue;
+
+  const today = new Date();
+  today.setHours(23, 59, 59, 999);
+
+  if (presetValue && presetValue !== 'custom') {
+    const days = Number(presetValue);
+    if (!Number.isFinite(days)) return true;
+    const start = new Date(today);
+    start.setHours(0, 0, 0, 0);
+    start.setDate(start.getDate() - (days - 1));
+    return itemDate >= start && itemDate <= today;
+  }
+
+  const fromDate = parseDate(fromValue);
+  const toDate = parseDate(toValue);
+  if (fromDate && itemDate < fromDate) return false;
+  if (toDate) {
+    toDate.setHours(23, 59, 59, 999);
+    if (itemDate > toDate) return false;
+  }
+  return true;
+}
+
 function render(items) {
   const list = document.getElementById('paperList');
   const stats = document.getElementById('stats');
@@ -100,6 +136,9 @@ function setup(items) {
   const typeFilter = document.getElementById('typeFilter');
   const categoryFilter = document.getElementById('categoryFilter');
   const sortSelect = document.getElementById('sortSelect');
+  const datePresetFilter = document.getElementById('datePresetFilter');
+  const dateFrom = document.getElementById('dateFrom');
+  const dateTo = document.getElementById('dateTo');
 
   uniqueTypes(items).forEach(type => {
     const option = document.createElement('option');
@@ -120,21 +159,51 @@ function setup(items) {
     const type = typeFilter.value;
     const category = categoryFilter.value;
     const sortBy = sortSelect.value;
+    const presetValue = datePresetFilter.value;
+    const fromValue = dateFrom.value;
+    const toValue = dateTo.value;
 
     const filtered = items.filter(item => {
       const okQuery = matchesQuery(item, query);
       const okType = !type || item.type === type;
       const okCategory = !category || (item.categories || []).includes(category);
-      return okQuery && okType && okCategory;
+      const okDate = matchesDate(item, presetValue, fromValue, toValue);
+      return okQuery && okType && okCategory && okDate;
     });
 
     render(sortItems(filtered, sortBy));
+  }
+
+  function syncDateModeFromPreset() {
+    const isCustom = datePresetFilter.value === 'custom';
+    dateFrom.disabled = !isCustom;
+    dateTo.disabled = !isCustom;
+    if (!isCustom) {
+      dateFrom.value = '';
+      dateTo.value = '';
+    }
+  }
+
+  function switchToCustomIfNeeded() {
+    if (dateFrom.value || dateTo.value) {
+      datePresetFilter.value = 'custom';
+    }
+    syncDateModeFromPreset();
+    update();
   }
 
   searchInput.addEventListener('input', update);
   typeFilter.addEventListener('change', update);
   categoryFilter.addEventListener('change', update);
   sortSelect.addEventListener('change', update);
+  datePresetFilter.addEventListener('change', () => {
+    syncDateModeFromPreset();
+    update();
+  });
+  dateFrom.addEventListener('change', switchToCustomIfNeeded);
+  dateTo.addEventListener('change', switchToCustomIfNeeded);
+
+  syncDateModeFromPreset();
   update();
 }
 

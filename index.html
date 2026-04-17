@@ -15,18 +15,10 @@
         <span class="eyebrow">Research Archive</span>
         <h1>Paper Library</h1>
         <p class="hero-desc">把论文与研究博客整理成一个可搜索、可分类、可排序的知识库。每条内容保留摘要、总结、创新点与原文链接，便于持续积累与回看。</p>
-        <div class="hero-metrics">
+        <div class="hero-metrics feature-only">
           <div class="metric-card">
-            <span class="metric-label">内容类型</span>
-            <strong>Paper / Blog</strong>
-          </div>
-          <div class="metric-card">
-            <span class="metric-label">当前能力</span>
-            <strong>搜索 / 分类 / 排序</strong>
-          </div>
-          <div class="metric-card">
-            <span class="metric-label">数据来源</span>
-            <strong>结构化 JSON</strong>
+            <span class="metric-label">当前功能</span>
+            <strong>搜索 / 分类 / 排序 / 时间筛选</strong>
           </div>
         </div>
       </div>
@@ -37,7 +29,7 @@
         <label class="control-label" for="searchInput">关键词搜索</label>
         <input id="searchInput" type="text" placeholder="搜索标题、摘要、总结、关键词、创新点..." />
       </div>
-      <div class="filters-grid">
+      <div class="filters-grid filters-grid-main">
         <div>
           <label class="control-label" for="typeFilter">内容类型</label>
           <select id="typeFilter">
@@ -60,6 +52,27 @@
           </select>
         </div>
       </div>
+      <div class="filters-grid filters-grid-time">
+        <div>
+          <label class="control-label" for="datePresetFilter">时间筛选</label>
+          <select id="datePresetFilter">
+            <option value="">全部时间</option>
+            <option value="1">最近1天</option>
+            <option value="3">最近3天</option>
+            <option value="7">最近7天</option>
+            <option value="30">最近30天</option>
+            <option value="custom">自定义时间区间</option>
+          </select>
+        </div>
+        <div>
+          <label class="control-label" for="dateFrom">开始日期</label>
+          <input id="dateFrom" type="date" />
+        </div>
+        <div>
+          <label class="control-label" for="dateTo">结束日期</label>
+          <input id="dateTo" type="date" />
+        </div>
+      </div>
     </section>
 
     <main>
@@ -70,7 +83,7 @@
       <template id="emptyStateTemplate">
         <section class="empty-state">
           <h2>没有匹配结果</h2>
-          <p>试试更换关键词、分类或排序方式。</p>
+          <p>试试更换关键词、分类、时间区间或排序方式。</p>
         </section>
       </template>
     </main>
