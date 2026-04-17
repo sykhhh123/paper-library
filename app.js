@@ -197,7 +197,19 @@ function setup(items) {
     }
     update();
   });
+  dateFrom.addEventListener('input', () => {
+    if (dateFrom.value || dateTo.value) {
+      datePresetFilter.value = '';
+    }
+    update();
+  });
   dateFrom.addEventListener('change', () => {
+    if (dateFrom.value || dateTo.value) {
+      datePresetFilter.value = '';
+    }
+    update();
+  });
+  dateTo.addEventListener('input', () => {
     if (dateFrom.value || dateTo.value) {
       datePresetFilter.value = '';
     }
