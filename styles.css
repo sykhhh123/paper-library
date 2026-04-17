@@ -143,6 +143,16 @@ select {
   color-scheme: dark;
 }
 
+input[type="date"] {
+  color-scheme: dark;
+  cursor: pointer;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
 input::placeholder {
   color: #7f92ad;
 }
@@ -157,32 +167,6 @@ input:disabled,
 select:disabled {
   opacity: 0.45;
   cursor: not-allowed;
-}
-
-/* Date field: visible text input overlaying a hidden native date input */
-.date-field {
-  position: relative;
-  width: 100%;
-  height: 48px;
-}
-
-.date-field input[type="text"] {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  z-index: 2;
-}
-
-.date-field input[type="date"] {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  z-index: 3;
-  cursor: pointer;
 }
 
 .result-head {

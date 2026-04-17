@@ -151,8 +151,6 @@ function setup(items) {
   const datePresetFilter = document.getElementById('datePresetFilter');
   const dateFrom = document.getElementById('dateFrom');
   const dateTo = document.getElementById('dateTo');
-  const dateFromDisplay = document.getElementById('dateFromDisplay');
-  const dateToDisplay = document.getElementById('dateToDisplay');
 
   uniqueTypes(items).forEach(type => {
     const option = document.createElement('option');
@@ -168,16 +166,7 @@ function setup(items) {
     categoryFilter.appendChild(option);
   });
 
-  function syncDisplays() {
-    dateFromDisplay.value = dateFrom.value || '';
-    dateToDisplay.value = dateTo.value || '';
-    dateFromDisplay.placeholder = dateFrom.value ? '' : '点击选择日期';
-    dateToDisplay.placeholder = dateTo.value ? '' : '点击选择日期';
-  }
-
   function update() {
-    syncDisplays();
-
     const query = searchInput.value.trim();
     const type = typeFilter.value;
     const category = categoryFilter.value;
