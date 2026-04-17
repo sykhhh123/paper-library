@@ -30,19 +30,19 @@
         <input id="searchInput" type="text" placeholder="搜索标题、摘要、总结、关键词、创新点..." />
       </div>
       <div class="filters-grid filters-grid-main">
-        <div>
+        <div class="filter-field">
           <label class="control-label" for="typeFilter">内容类型</label>
           <select id="typeFilter">
             <option value="">全部类型</option>
           </select>
         </div>
-        <div>
+        <div class="filter-field">
           <label class="control-label" for="categoryFilter">分类</label>
           <select id="categoryFilter">
             <option value="">全部分类</option>
           </select>
         </div>
-        <div>
+        <div class="filter-field">
           <label class="control-label" for="sortSelect">排序方式</label>
           <select id="sortSelect">
             <option value="published_desc">按发布时间：新到旧</option>
@@ -53,7 +53,7 @@
         </div>
       </div>
       <div class="filters-grid filters-grid-time">
-        <div>
+        <div class="filter-field">
           <label class="control-label" for="datePresetFilter">时间筛选</label>
           <select id="datePresetFilter">
             <option value="">全部时间</option>
@@ -64,19 +64,13 @@
             <option value="custom">自定义时间区间</option>
           </select>
         </div>
-        <div>
-          <label class="control-label">开始日期</label>
-          <button id="dateFromButton" class="date-trigger" type="button" disabled>
-            <span id="dateFromText">选择开始日期</span>
-          </button>
-          <input id="dateFrom" class="date-native-input" type="date" />
+        <div class="filter-field">
+          <label class="control-label" for="dateFrom">开始日期</label>
+          <input id="dateFrom" type="date" />
         </div>
-        <div>
-          <label class="control-label">结束日期</label>
-          <button id="dateToButton" class="date-trigger" type="button" disabled>
-            <span id="dateToText">选择结束日期</span>
-          </button>
-          <input id="dateTo" class="date-native-input" type="date" />
+        <div class="filter-field">
+          <label class="control-label" for="dateTo">结束日期</label>
+          <input id="dateTo" type="date" />
         </div>
       </div>
     </section>

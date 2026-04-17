@@ -138,6 +138,12 @@ body {
 .filters-grid {
   display: grid;
   gap: 14px;
+  align-items: end;
+}
+
+.filter-field {
+  display: flex;
+  flex-direction: column;
 }
 
 .filters-grid-main {
@@ -145,12 +151,13 @@ body {
 }
 
 .filters-grid-time {
-  grid-template-columns: 1.1fr 1fr 1fr;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   margin-top: 14px;
 }
 
-input, select, .date-trigger {
+input, select {
   width: 100%;
+  min-height: 50px;
   padding: 14px 16px;
   border-radius: 14px;
   border: 1px solid rgba(148, 163, 184, 0.22);
@@ -164,38 +171,14 @@ input::placeholder {
   color: #7f92ad;
 }
 
-input:focus, select:focus, .date-trigger:focus {
+input:focus, select:focus {
   border-color: rgba(125, 211, 252, 0.55);
   box-shadow: 0 0 0 4px rgba(125, 211, 252, 0.12);
 }
 
-.date-trigger {
-  text-align: left;
-  cursor: pointer;
-  position: relative;
-}
-
-.date-trigger::after {
-  content: '📅';
-  position: absolute;
-  right: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  opacity: 0.85;
-}
-
-.date-trigger:disabled,
 input:disabled {
   opacity: 0.45;
   cursor: not-allowed;
-}
-
-.date-native-input {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-  width: 0;
-  height: 0;
 }
 
 .result-head {
