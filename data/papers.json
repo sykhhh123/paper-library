@@ -1,0 +1,49 @@
+[
+  {
+    "id": "pi07-steerable-model-emergent-capabilities",
+    "type": "blog",
+    "title": "π0.7: a Steerable Model with Emergent Capabilities",
+    "authors": [
+      "Bo Ai",
+      "Ali Amin",
+      "Raichelle Aniceto",
+      "Ashwin Balakrishna",
+      "Greg Balke",
+      "Kevin Black",
+      "Physical Intelligence team"
+    ],
+    "year": 2026,
+    "date_published": "2026-04-16",
+    "venue": "Physical Intelligence Blog",
+    "categories": [
+      "Robotics",
+      "VLA",
+      "Foundation Models"
+    ],
+    "keywords": [
+      "robotics",
+      "vision-language-action",
+      "generalization",
+      "compositional generalization",
+      "cross-embodiment transfer",
+      "steerable model",
+      "air fryer",
+      "language coaching"
+    ],
+    "abstract": "π0.7 is a general-purpose robotic vision-language-action model that shows a step-change in generalization. It matches specialist-level dexterous performance while also following new language commands, recombining learned skills for unseen tasks, and transferring across robot embodiments.",
+    "summary": "这篇博客介绍了 Physical Intelligence 的 π0.7 机器人基础模型。核心结论是：相比过去需要按任务微调的 specialist policy，π0.7 作为一个通用 VLA 模型，已经开始表现出组合泛化能力。它不仅能在已知灵巧操作任务上达到接近甚至超过专用模型的表现，还能根据新的语言指令完成训练中未显式见过的任务，例如在没有专门示范数据的情况下尝试操作空气炸锅，或把在一种机器人上学到的洗衣折叠能力迁移到另一种不同构型的双臂机器人上。文章还强调，模型泛化提升的关键不只是数据更大，而是通过多模态 prompt 在训练时显式告诉模型“做什么”以及“如何做”，从而把语言、元数据、控制模态和视觉子目标统一进同一条件框架。",
+    "innovations": [
+      "提出可控的通用机器人模型 π0.7，在单一模型中兼顾 specialist-level dexterity 与开放任务泛化。",
+      "使用多模态 prompt 条件化训练，把语言说明、速度/质量元数据、控制模态标签和视觉子目标统一纳入输入。",
+      "展示了早期组合泛化能力：可依据逐步语言指导完成未专门收集示范的新任务。",
+      "展示跨 embodiment transfer：在未针对目标机器人收集特定任务数据的情况下，将技能迁移到不同机器人平台。",
+      "通过吸收 RL specialist 产生的数据与策略元数据，使单模型在多个任务上达到接近专用强化学习策略的成功率与吞吐表现。"
+    ],
+    "source_url": "https://www.pi.website/blog/pi07",
+    "canonical_url": "https://physicalintelligence.company/blog/pi07",
+    "pdf_url": "https://www.pi.website/blog/pi07",
+    "added_at": "2026-04-17",
+    "sort_timestamp": "2026-04-16",
+    "notes": "当前收录源为官方博客首发文章；页面中提到附带 π0.7 pdf，但当前未单独解析 PDF 文件。"
+  }
+]

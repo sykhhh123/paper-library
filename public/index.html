@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paper Library</title>
+  <meta name="description" content="一个可搜索、可筛选、可排序的论文与研究博客知识库。" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page-shell"></div>
+  <div class="container">
+    <header class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">Research Archive</span>
+        <h1>Paper Library</h1>
+        <p class="hero-desc">把论文与研究博客整理成一个可搜索、可分类、可排序的知识库。每条内容保留摘要、总结、创新点与原文链接，便于持续积累与回看。</p>
+        <div class="hero-metrics">
+          <div class="metric-card">
+            <span class="metric-label">内容类型</span>
+            <strong>Paper / Blog</strong>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">当前能力</span>
+            <strong>搜索 / 分类 / 排序</strong>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">数据来源</span>
+            <strong>结构化 JSON</strong>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="toolbar">
+      <div class="search-wrap">
+        <label class="control-label" for="searchInput">关键词搜索</label>
+        <input id="searchInput" type="text" placeholder="搜索标题、摘要、总结、关键词、创新点..." />
+      </div>
+      <div class="filters-grid">
+        <div>
+          <label class="control-label" for="typeFilter">内容类型</label>
+          <select id="typeFilter">
+            <option value="">全部类型</option>
+          </select>
+        </div>
+        <div>
+          <label class="control-label" for="categoryFilter">分类</label>
+          <select id="categoryFilter">
+            <option value="">全部分类</option>
+          </select>
+        </div>
+        <div>
+          <label class="control-label" for="sortSelect">排序方式</label>
+          <select id="sortSelect">
+            <option value="published_desc">按发布时间：新到旧</option>
+            <option value="published_asc">按发布时间：旧到新</option>
+            <option value="added_desc">按收录时间：新到旧</option>
+            <option value="title_asc">按标题：A-Z</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <main>
+      <div class="result-head">
+        <div id="stats" class="stats"></div>
+      </div>
+      <div id="paperList" class="paper-list"></div>
+      <template id="emptyStateTemplate">
+        <section class="empty-state">
+          <h2>没有匹配结果</h2>
+          <p>试试更换关键词、分类或排序方式。</p>
+        </section>
+      </template>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
