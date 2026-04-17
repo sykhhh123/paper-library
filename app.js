@@ -1,5 +1,5 @@
 async function loadPapers() {
-  const response = await fetch('./site-data/papers.json');
+  const response = await fetch('./data/papers.json');
   if (!response.ok) {
     throw new Error(`HTTP ${response.status}`);
   }
@@ -30,12 +30,10 @@ function matchesQuery(item, query) {
 
 function sortItems(items, sortBy) {
   const result = [...items];
-  if (sortBy === 'published_desc') {
-    result.sort((a, b) => (b.sort_timestamp || '').localeCompare(a.sort_timestamp || ''));
-  } else if (sortBy === 'published_asc') {
-    result.sort((a, b) => (a.sort_timestamp || '').localeCompare(b.sort_timestamp || ''));
-  } else if (sortBy === 'added_desc') {
+  if (sortBy === 'added_desc') {
     result.sort((a, b) => (b.added_at || '').localeCompare(a.added_at || ''));
+  } else if (sortBy === 'added_asc') {
+    result.sort((a, b) => (a.added_at || '').localeCompare(b.added_at || ''));
   } else if (sortBy === 'title_asc') {
     result.sort((a, b) => (a.title || '').localeCompare(b.title || ''));
   }
