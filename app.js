@@ -31,9 +31,9 @@ function matchesQuery(item, query) {
 function sortItems(items, sortBy) {
   const result = [...items];
   if (sortBy === 'added_desc') {
-    result.sort((a, b) => (b.added_at || '').localeCompare(a.added_at || ''));
+    result.sort((a, b) => ((b.added_at_ts || b.added_at || '').localeCompare(a.added_at_ts || a.added_at || '')));
   } else if (sortBy === 'added_asc') {
-    result.sort((a, b) => (a.added_at || '').localeCompare(b.added_at || ''));
+    result.sort((a, b) => ((a.added_at_ts || a.added_at || '').localeCompare(b.added_at_ts || b.added_at || '')));
   } else if (sortBy === 'title_asc') {
     result.sort((a, b) => (a.title || '').localeCompare(b.title || ''));
   }

@@ -92,6 +92,7 @@
     "canonical_url": "https://doi.org/10.48550/arXiv.2604.10333",
     "pdf_url": "https://arxiv.org/pdf/2604.10333",
     "added_at": "2026-04-17",
+    "added_at_ts": "2026-04-17T18:16:00+08:00",
     "sort_timestamp": "2026-04-11",
     "notes": "依据用户截图识别标题后，已找到 arXiv 原文并基于原文信息重新核实收录。Subjects: cs.AI, cs.CV。"
   }
