@@ -43,6 +43,7 @@
     "canonical_url": "https://physicalintelligence.company/blog/pi07",
     "pdf_url": "https://www.pi.website/blog/pi07",
     "added_at": "2026-04-17",
+    "added_at_ts": "2026-04-17T17:00:00+08:00",
     "sort_timestamp": "2026-04-16",
     "notes": "当前收录源为官方博客首发文章；页面中提到附带 π0.7 pdf，但当前未单独解析 PDF 文件。"
   },
