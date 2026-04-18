@@ -96,5 +96,49 @@
     "added_at_ts": "2026-04-17T18:16:00+08:00",
     "sort_timestamp": "2026-04-11",
     "notes": "依据用户截图识别标题后，已找到 arXiv 原文并基于原文信息重新核实收录。Subjects: cs.AI, cs.CV。"
+  },
+  {
+    "id": "vision-transformers-need-more-than-registers",
+    "type": "paper",
+    "title": "Vision Transformers Need More Than Registers",
+    "authors": [
+      "Cheng Shi",
+      "Yizhou Yu",
+      "Sibei Yang"
+    ],
+    "year": 2026,
+    "date_published": "2026-02-25",
+    "venue": "arXiv",
+    "categories": [
+      "Vision Transformers",
+      "Representation Learning",
+      "Computer Vision"
+    ],
+    "keywords": [
+      "vision transformer",
+      "ViT",
+      "CLS token",
+      "representation learning",
+      "artifact analysis",
+      "global attention",
+      "self-supervision",
+      "CVPR 2026"
+    ],
+    "abstract": "Vision Transformers (ViTs), when pre-trained on large-scale data, provide general-purpose representations for diverse downstream tasks. However, artifacts in ViTs are widely observed across different supervision paradigms and downstream tasks. Through systematic analysis of artifacts in ViTs, we find that their fundamental mechanisms have yet to be sufficiently elucidated. In this paper, through systematic analysis, we conclude that these artifacts originate from a lazy aggregation behavior: ViT uses semantically irrelevant background patches as shortcuts to represent global semantics, driven by global attention and Coarse-grained semantic supervision. Our solution selectively integrates patch features into the CLS token, reducing the influence of background-dominated shortcuts and consistently improving performance across 12 benchmarks under label-, text-, and self-supervision. We hope this work offers a new perspective on ViT behavior.",
+    "summary": "这篇论文研究了 Vision Transformer 中常见但解释不足的 artifact 问题。作者通过系统分析指出，问题根源并不只是 register token 不够，而是 ViT 在全局注意力和粗粒度语义监督驱动下，会形成一种“lazy aggregation”行为：用语义并不相关的背景 patch 作为捷径来承载全局语义。为解决这个问题，论文提出一种选择性地把 patch 特征整合进 CLS token 的方法，从而减弱背景主导的 shortcut，对 label supervision、text supervision 和 self-supervision 三种范式下的 12 个 benchmark 都带来稳定提升。作者希望借此提供一个理解 ViT 表征行为的新视角。",
+    "innovations": [
+      "系统分析 ViT artifact 的成因，并将其归结为一种 lazy aggregation 行为，而不是简单的 token 设计问题。",
+      "指出 ViT 会利用语义无关的背景 patch 作为表示全局语义的 shortcut，这与全局注意力和粗粒度监督有关。",
+      "提出选择性地将 patch 特征整合进 CLS token 的方法，以减少背景 shortcut 的影响。",
+      "在 label、text 和 self-supervision 三类训练范式下的 12 个 benchmark 上获得稳定提升。",
+      "为理解 ViT 的内部机制与表征偏差提供了新的分析视角。"
+    ],
+    "source_url": "https://arxiv.org/abs/2602.22394",
+    "canonical_url": "https://doi.org/10.48550/arXiv.2602.22394",
+    "pdf_url": "https://arxiv.org/pdf/2602.22394",
+    "added_at": "2026-04-19",
+    "added_at_ts": "2026-04-19T03:14:26+08:00",
+    "sort_timestamp": "2026-02-25",
+    "notes": "收录源为 arXiv。当前版本为 v2（2026-04-14 修订），arXiv 首次提交时间为 2026-02-25。Comments: Accepted by CVPR 2026. Subjects: cs.CV。"
   }
 ]
