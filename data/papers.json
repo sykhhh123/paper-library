@@ -140,5 +140,67 @@
     "added_at_ts": "2026-04-19T03:14:26+08:00",
     "sort_timestamp": "2026-02-25",
     "notes": "收录源为 arXiv。当前版本为 v2（2026-04-14 修订），arXiv 首次提交时间为 2026-02-25。Comments: Accepted by CVPR 2026. Subjects: cs.CV。"
+  },
+  {
+    "id": "beyond-language-modeling-exploration-multimodal-pretraining",
+    "type": "paper",
+    "title": "Beyond Language Modeling: An Exploration of Multimodal Pretraining",
+    "authors": [
+      "Shengbang Tong",
+      "David Fan",
+      "John Nguyen",
+      "Ellis Brown",
+      "Gaoyue Zhou",
+      "Shengyi Qian",
+      "Boyang Zheng",
+      "Théophane Vallaeys",
+      "Junlin Han",
+      "Rob Fergus",
+      "Naila Murray",
+      "Marjan Ghazvininejad",
+      "Mike Lewis",
+      "Nicolas Ballas",
+      "Amir Bar",
+      "Michael Rabbat",
+      "Jakob Verbeek",
+      "Luke Zettlemoyer",
+      "Koustuv Sinha",
+      "Yann LeCun",
+      "Saining Xie"
+    ],
+    "year": 2026,
+    "date_published": "2026-03-03",
+    "venue": "arXiv",
+    "categories": [
+      "Multimodal Pretraining",
+      "Foundation Models",
+      "Computer Vision"
+    ],
+    "keywords": [
+      "multimodal pretraining",
+      "foundation models",
+      "Transfusion",
+      "diffusion",
+      "representation autoencoder",
+      "world modeling",
+      "mixture of experts",
+      "scaling laws"
+    ],
+    "abstract": "The visual world offers a critical axis for advancing foundation models beyond language. Despite growing interest in this direction, the design space for native multimodal models remains opaque. We provide empirical clarity through controlled, from-scratch pretraining experiments, isolating the factors that govern multimodal pretraining without interference from language pretraining. We adopt the Transfusion framework, using next-token prediction for language and diffusion for vision, to train on diverse data including text, video, image-text pairs, and even action-conditioned video. Our experiments yield four key insights: (i) Representation Autoencoder (RAE) provides an optimal unified visual representation by excelling at both visual understanding and generation; (ii) visual and language data are complementary and yield synergy for downstream capabilities; (iii) unified multimodal pretraining leads naturally to world modeling, with capabilities emerging from general training; and (iv) Mixture-of-Experts (MoE) enables efficient and effective multimodal scaling while naturally inducing modality specialization. Through IsoFLOP analysis, we compute scaling laws for both modalities and uncover a scaling asymmetry: vision is significantly more data-hungry than language. We demonstrate that the MoE architecture harmonizes this scaling asymmetry by providing the high model capacity required by language while accommodating the data-intensive nature of vision, paving the way for truly unified multimodal models.",
+    "summary": "这篇论文系统探索了从零开始进行多模态预训练的设计空间，目标是回答“超越纯语言建模之后，原生多模态基础模型该怎么训”这个问题。作者采用 Transfusion 框架，把语言建模的 next-token prediction 与视觉建模的 diffusion 结合起来，在文本、视频、图文对以及动作条件视频等多种数据上做受控实验。论文总结出四个核心结论：其一，Representation Autoencoder（RAE）在视觉理解和生成两方面都表现突出，是统一视觉表示的优选方案；其二，视觉数据和语言数据是互补的，联合训练会带来下游能力协同；其三，统一的多模态预训练会自然涌现出 world modeling 能力；其四，MoE 架构既能高效扩展多模态模型规模，也会自然形成模态分工。进一步的 IsoFLOP 分析还显示，视觉相较语言明显更“吃数据”，而 MoE 正好有助于协调这种跨模态 scaling asymmetry。",
+    "innovations": [
+      "通过受控的从零开始预训练实验，系统分析原生多模态模型的关键设计因素，避免语言预训练先验干扰。",
+      "采用 Transfusion 框架，将语言 next-token prediction 与视觉 diffusion 统一到同一多模态训练范式中。",
+      "提出并验证 RAE 作为统一视觉表示的优选方案，同时兼顾视觉理解与生成能力。",
+      "指出统一多模态预训练会自然涌现 world modeling 能力，而不必额外设计专门目标。",
+      "通过 IsoFLOP 分析揭示视觉比语言更数据饥渴，并说明 MoE 能协调这种跨模态 scaling asymmetry。"
+    ],
+    "source_url": "https://arxiv.org/abs/2603.03276",
+    "canonical_url": "https://doi.org/10.48550/arXiv.2603.03276",
+    "pdf_url": "https://arxiv.org/pdf/2603.03276",
+    "added_at": "2026-04-20",
+    "added_at_ts": "2026-04-20T10:31:09+08:00",
+    "sort_timestamp": "2026-03-03",
+    "notes": "收录源为 arXiv。Comments 中提到项目主页。Subjects: cs.CV。"
   }
 ]
