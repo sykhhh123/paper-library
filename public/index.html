@@ -37,26 +37,46 @@
         <label class="control-label" for="searchInput">关键词搜索</label>
         <input id="searchInput" type="text" placeholder="搜索标题、摘要、总结、关键词、创新点..." />
       </div>
-      <div class="filters-grid">
-        <div>
+      <div class="filters-grid filters-grid-main">
+        <div class="filter-field">
           <label class="control-label" for="typeFilter">内容类型</label>
           <select id="typeFilter">
             <option value="">全部类型</option>
           </select>
         </div>
-        <div>
+        <div class="filter-field">
           <label class="control-label" for="categoryFilter">分类</label>
           <select id="categoryFilter">
             <option value="">全部分类</option>
           </select>
         </div>
-        <div>
+        <div class="filter-field">
           <label class="control-label" for="sortSelect">排序方式</label>
           <select id="sortSelect">
             <option value="added_desc">按收录时间：新到旧</option>
             <option value="added_asc">按收录时间：旧到新</option>
             <option value="title_asc">按标题：A-Z</option>
           </select>
+        </div>
+      </div>
+      <div class="filters-grid filters-grid-time">
+        <div class="filter-field">
+          <label class="control-label" for="datePresetFilter">时间区间</label>
+          <select id="datePresetFilter">
+            <option value="">全部时间</option>
+            <option value="1">最近1天</option>
+            <option value="3">最近3天</option>
+            <option value="7">最近7天</option>
+            <option value="30">最近30天</option>
+          </select>
+        </div>
+        <div class="filter-field">
+          <label class="control-label" for="dateFrom">开始日期</label>
+          <input id="dateFrom" type="date" />
+        </div>
+        <div class="filter-field">
+          <label class="control-label" for="dateTo">结束日期</label>
+          <input id="dateTo" type="date" />
         </div>
       </div>
     </section>
@@ -69,7 +89,7 @@
       <template id="emptyStateTemplate">
         <section class="empty-state">
           <h2>没有匹配结果</h2>
-          <p>试试更换关键词、分类或排序方式。</p>
+          <p>试试更换关键词、分类、时间区间或排序方式。</p>
         </section>
       </template>
     </main>

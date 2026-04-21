@@ -49,6 +49,54 @@ function escapeHtml(value) {
     .replaceAll("'", '&#39;');
 }
 
+function parseDate(value) {
+  if (!value) return null;
+  const d = new Date(`${value}T00:00:00`);
+  return Number.isNaN(d.getTime()) ? null : d;
+}
+
+function getItemDate(item) {
+  return parseDate(item.added_at || '');
+}
+
+function hasCustomRange(fromValue, toValue) {
+  return Boolean(fromValue || toValue);
+}
+
+function matchesDate(item, presetValue, fromValue, toValue) {
+  const itemDate = getItemDate(item);
+  const useCustomRange = hasCustomRange(fromValue, toValue);
+
+  if (!itemDate) {
+    return !presetValue && !fromValue && !toValue;
+  }
+
+  if (useCustomRange) {
+    const fromDate = parseDate(fromValue);
+    const toDate = parseDate(toValue);
+    if (fromDate && itemDate < fromDate) return false;
+    if (toDate) {
+      toDate.setHours(23, 59, 59, 999);
+      if (itemDate > toDate) return false;
+    }
+    return true;
+  }
+
+  const today = new Date();
+  today.setHours(23, 59, 59, 999);
+
+  if (presetValue) {
+    const days = Number(presetValue);
+    if (!Number.isFinite(days)) return true;
+    const start = new Date(today);
+    start.setHours(0, 0, 0, 0);
+    start.setDate(start.getDate() - (days - 1));
+    return itemDate >= start && itemDate <= today;
+  }
+
+  return true;
+}
+
 function render(items) {
   const list = document.getElementById('paperList');
   const stats = document.getElementById('stats');
@@ -98,6 +146,9 @@ function setup(items) {
   const typeFilter = document.getElementById('typeFilter');
   const categoryFilter = document.getElementById('categoryFilter');
   const sortSelect = document.getElementById('sortSelect');
+  const datePresetFilter = document.getElementById('datePresetFilter');
+  const dateFrom = document.getElementById('dateFrom');
+  const dateTo = document.getElementById('dateTo');
 
   uniqueTypes(items).forEach(type => {
     const option = document.createElement('option');
@@ -118,12 +169,16 @@ function setup(items) {
     const type = typeFilter.value;
     const category = categoryFilter.value;
     const sortBy = sortSelect.value;
+    const presetValue = datePresetFilter.value;
+    const fromValue = dateFrom.value;
+    const toValue = dateTo.value;
 
     const filtered = items.filter(item => {
       const okQuery = matchesQuery(item, query);
       const okType = !type || item.type === type;
       const okCategory = !category || (item.categories || []).includes(category);
-      return okQuery && okType && okCategory;
+      const okDate = matchesDate(item, presetValue, fromValue, toValue);
+      return okQuery && okType && okCategory && okDate;
     });
 
     render(sortItems(filtered, sortBy));
@@ -133,6 +188,38 @@ function setup(items) {
   typeFilter.addEventListener('change', update);
   categoryFilter.addEventListener('change', update);
   sortSelect.addEventListener('change', update);
+  datePresetFilter.addEventListener('change', () => {
+    if (datePresetFilter.value) {
+      dateFrom.value = '';
+      dateTo.value = '';
+    }
+    update();
+  });
+  dateFrom.addEventListener('input', () => {
+    if (dateFrom.value || dateTo.value) {
+      datePresetFilter.value = '';
+    }
+    update();
+  });
+  dateFrom.addEventListener('change', () => {
+    if (dateFrom.value || dateTo.value) {
+      datePresetFilter.value = '';
+    }
+    update();
+  });
+  dateTo.addEventListener('input', () => {
+    if (dateFrom.value || dateTo.value) {
+      datePresetFilter.value = '';
+    }
+    update();
+  });
+  dateTo.addEventListener('change', () => {
+    if (dateFrom.value || dateTo.value) {
+      datePresetFilter.value = '';
+    }
+    update();
+  });
+
   update();
 }
 

@@ -56,7 +56,7 @@ function parseDate(value) {
 }
 
 function getItemDate(item) {
-  return parseDate(item.date_published || item.sort_timestamp || item.added_at || '');
+  return parseDate(item.added_at || '');
 }
 
 function hasCustomRange(fromValue, toValue) {
