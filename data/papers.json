@@ -202,5 +202,52 @@
     "added_at_ts": "2026-04-20T10:31:09+08:00",
     "sort_timestamp": "2026-03-03",
     "notes": "收录源为 arXiv。Comments 中提到项目主页。Subjects: cs.CV。"
+  },
+  {
+    "id": "unit-unified-physical-language-human-humanoid-policy-learning-world-modeling",
+    "type": "paper",
+    "title": "UniT: Toward a Unified Physical Language for Human-to-Humanoid Policy Learning and World Modeling",
+    "authors": [
+      "Boyu Chen",
+      "Yi Chen",
+      "Lu Qiu",
+      "Jerry Bai",
+      "Yuying Ge",
+      "Yixiao Ge"
+    ],
+    "year": 2026,
+    "date_published": "2026-04-21",
+    "venue": "arXiv",
+    "categories": [
+      "Robotics",
+      "Humanoid Robots",
+      "World Models"
+    ],
+    "keywords": [
+      "humanoid robotics",
+      "policy learning",
+      "world modeling",
+      "vision-language-action",
+      "cross-embodiment transfer",
+      "latent action tokenizer",
+      "VQ-VAE",
+      "robot learning from human data"
+    ],
+    "abstract": "Scaling humanoid foundation models is bottlenecked by the scarcity of robotic data. While massive egocentric human data offers a scalable alternative, bridging the cross-embodiment chasm remains a fundamental challenge due to kinematic mismatches. We introduce UniT (Unified Latent Action Tokenizer via Visual Anchoring), a framework that establishes a unified physical language for human-to-humanoid transfer. Grounded in the philosophy that heterogeneous kinematics share universal visual consequences, UniT employs a tri-branch cross-reconstruction mechanism: actions predict vision to anchor kinematics to physical outcomes, while vision reconstructs actions to filter out irrelevant visual confounders. Concurrently, a fusion branch synergies these purified modalities into a shared discrete latent space of embodiment-agnostic physical intents. We validate UniT across two paradigms: 1) Policy Learning (VLA-UniT): By predicting these unified tokens, it effectively leverages diverse human data to achieve state-of-the-art data efficiency and robust out-of-distribution (OOD) generalization on both humanoid simulation benchmark and real-world deployments, notably demonstrating zero-shot task transfer. 2) World Modeling (WM-UniT): By aligning cross-embodiment dynamics via unified tokens as conditions, it realizes direct human-to-humanoid action transfer. This alignment ensures that human data seamlessly translates into enhanced action controllability for humanoid video generation. Ultimately, by inducing a highly aligned cross-embodiment representation (empirically verified by t-SNE visualizations revealing the convergence of human and humanoid features into a shared manifold), UniT offers a scalable path to distill vast human knowledge into general-purpose humanoid capabilities.",
+    "summary": "这篇论文提出 UniT，目标是为 human-to-humanoid transfer 建立一种统一的“物理语言”，同时服务于策略学习和世界模型。作者认为，人和人形机器人的运动学结构虽然不同，但它们造成的视觉后果具有共通性，因此可以用视觉作为锚点，把异构动作空间对齐到统一离散潜空间中。具体做法是构建一个 tri-branch tokenizer：分别编码视觉、动作和融合后的视动特征，并通过 cross-reconstruction 让动作去预测视觉、让视觉去重建动作，从而滤除各自模态中的噪声和混杂因素。基于这一统一 token，论文进一步构建了 VLA-UniT 和 WM-UniT：前者把统一 token 作为策略学习目标，提高人形机器人上的数据效率、OOD 泛化与零样本任务迁移；后者把统一 token 作为世界模型的条件，实现 human-to-humanoid action transfer，并提升类人机器人视频生成中的动作可控性。整体上，这项工作试图把大量人类数据中的知识蒸馏到通用 humanoid 能力中。",
+    "innovations": [
+      "提出 UniT（Unified Latent Action Tokenizer via Visual Anchoring），将 human 与 humanoid 的异构动作映射到共享离散潜空间，形成统一物理语言。",
+      "设计 tri-branch cross-reconstruction 机制，联合建模视觉、动作和融合表征，并通过双向重建实现跨模态对齐与去噪。",
+      "将 UniT 同时用于两类 embodied AI 范式：VLA policy learning 与 world modeling，提供统一的 token 接口。",
+      "在 policy learning 中展示更高的数据效率、更强 OOD 泛化，以及 human-to-humanoid 的 zero-shot task transfer。",
+      "在 world modeling 中利用统一 token 作为条件，实现跨 embodiment 动力学对齐与更强的人形机器人视频生成可控性。"
+    ],
+    "source_url": "https://arxiv.org/abs/2604.19734",
+    "canonical_url": "https://doi.org/10.48550/arXiv.2604.19734",
+    "pdf_url": "https://arxiv.org/pdf/2604.19734",
+    "added_at": "2026-04-23",
+    "added_at_ts": "2026-04-23T11:16:02+08:00",
+    "sort_timestamp": "2026-04-21",
+    "notes": "依据用户上传 PDF 文件名识别 arXiv 编号 2604.19734，并已基于 arXiv 原文核实收录。Project page: https://xpeng-robotics.github.io/unit/ Subjects: cs.RO, cs.AI。"
   }
 ]
