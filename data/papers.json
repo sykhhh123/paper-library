@@ -407,5 +407,54 @@
     "added_at_ts": "2026-04-24T17:10:38+08:00",
     "sort_timestamp": "2026-04-13",
     "notes": "依据用户转发截图识别标题与 arXiv 编号 2604.11804，已基于 arXiv 原文核实收录。当前版本为 v2（2026-04-17 修订）；项目页：https://correr-zhou.github.io/OmniShow/。Subjects: cs.CV。"
+  },
+  {
+    "id": "light-guidance-without-classifiers-human-object-interaction-animation",
+    "type": "paper",
+    "title": "Unleashing Guidance Without Classifiers for Human-Object Interaction Animation",
+    "authors": [
+      "Ziyin Wang",
+      "Sirui Xu",
+      "Chuan Guo",
+      "Bing Zhou",
+      "Jiangshan Gong",
+      "Jian Wang",
+      "Yu-Xiong Wang",
+      "Liang-Yan Gui"
+    ],
+    "year": 2026,
+    "date_published": "2026-03-26",
+    "venue": "ICLR 2026",
+    "categories": [
+      "Human-Object Interaction",
+      "Motion Generation",
+      "Diffusion Models"
+    ],
+    "keywords": [
+      "human-object interaction animation",
+      "HOI",
+      "motion generation",
+      "diffusion forcing",
+      "classifier-free guidance",
+      "asynchronous denoising",
+      "contact-aware guidance",
+      "synthetic object geometries"
+    ],
+    "abstract": "Generating realistic human-object interaction (HOI) animations remains challenging because it requires jointly modeling dynamic human actions and diverse object geometries. Prior diffusion-based approaches often rely on hand-crafted contact priors or human-imposed kinematic constraints to improve contact quality. We propose LIGHT, a data-driven alternative in which guidance emerges from the denoising pace itself, reducing dependence on manually designed priors. Building on diffusion forcing, we factor the representation into modality-specific components and assign individualized noise levels with asynchronous denoising schedules. In this paradigm, cleaner components guide noisier ones through cross-attention, yielding guidance without auxiliary classifiers. We find that this data-driven guidance is inherently contact-aware, and can be enhanced when training is augmented with a broad spectrum of synthetic object geometries, encouraging invariance of contact semantics to geometric diversity. Extensive experiments show that pace-induced guidance more effectively mirrors the benefits of contact priors than conventional classifier-free guidance, while achieving higher contact fidelity, more realistic HOI generation, and stronger generalization to unseen objects and tasks.",
+    "summary": "这篇论文提出 LIGHT，用于生成 realistic human-object interaction（HOI）动画。它关注一个具身生成中的核心问题：人和不同几何形状物体交互时，如何在没有手工接触先验、人工运动学约束或辅助 classifier 的情况下保持接触质量和动作合理性。方法上，LIGHT 基于 diffusion forcing，把表示拆成不同模态组件，并给各组件分配不同噪声水平与异步去噪日程；在这种设定下，更干净的组件会通过 cross-attention 引导更嘈杂的组件，从去噪节奏本身产生 guidance。作者进一步发现这种 pace-induced guidance 具有接触感知特性，并可通过合成多样物体几何来增强对未见物体和任务的泛化。",
+    "innovations": [
+      "提出 LIGHT，将 human-object interaction animation 中的 guidance 从手工接触先验或辅助 classifier 转向由异步去噪节奏自然产生的数据驱动 guidance。",
+      "基于 diffusion forcing，将 HOI 表示分解为模态特定组件，并为不同组件设置 individualized noise levels 和 asynchronous denoising schedules。",
+      "利用 cross-attention 让更干净的组件引导更嘈杂的组件，实现无需 classifier 的 contact-aware guidance。",
+      "通过引入大范围合成物体几何进行训练增强，鼓励接触语义对物体形状多样性保持不变。",
+      "实验显示 pace-induced guidance 相比传统 classifier-free guidance 更接近接触先验带来的收益，并提升接触保真度、HOI 真实感及对未见物体/任务的泛化。"
+    ],
+    "source_url": "https://arxiv.org/abs/2603.25734",
+    "canonical_url": "https://doi.org/10.48550/arXiv.2603.25734",
+    "pdf_url": "https://arxiv.org/pdf/2603.25734",
+    "added_at": "2026-04-24",
+    "added_at_ts": "2026-04-24T17:48:04+08:00",
+    "sort_timestamp": "2026-03-26",
+    "notes": "依据用户转发截图识别标题，并已基于 arXiv 原文核实收录。截图标注为 ICLR 2026 conference paper；arXiv comments 给出项目页 http://ziyinwang1.github.io/LIGHT，但当前访问返回 GitHub Pages 404。Subjects: cs.CV。"
   }
 ]
