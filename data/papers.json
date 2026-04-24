@@ -352,5 +352,60 @@
     "added_at_ts": "2026-04-23T17:27:57+08:00",
     "sort_timestamp": "2026-04-22",
     "notes": "依据用户提供的 arXiv 链接收录。61 位作者。Subjects: cs.RO。"
+  },
+  {
+    "id": "omnishow-unifying-multimodal-conditions-human-object-interaction-video-generation",
+    "type": "paper",
+    "title": "OmniShow: Unifying Multimodal Conditions for Human-Object Interaction Video Generation",
+    "authors": [
+      "Donghao Zhou",
+      "Guisheng Liu",
+      "Hao Yang",
+      "Jiatong Li",
+      "Jingyu Lin",
+      "Xiaohu Huang",
+      "Yichen Liu",
+      "Xin Gao",
+      "Cunjian Chen",
+      "Shilei Wen",
+      "Chi-Wing Fu",
+      "Pheng-Ann Heng"
+    ],
+    "year": 2026,
+    "date_published": "2026-04-13",
+    "venue": "arXiv",
+    "categories": [
+      "Video Generation",
+      "Multimodal Generation",
+      "Human-Object Interaction"
+    ],
+    "keywords": [
+      "human-object interaction video generation",
+      "HOIVG",
+      "multimodal conditioning",
+      "text-to-video",
+      "image conditioning",
+      "audio-visual synchronization",
+      "pose conditioning",
+      "MMDiT",
+      "HOIVG-Bench"
+    ],
+    "abstract": "In this work, we study Human-Object Interaction Video Generation (HOIVG), which aims to synthesize high-quality human-object interaction videos conditioned on text, reference images, audio, and pose. This task holds significant practical value for automating content creation in real-world applications, such as e-commerce demonstrations, short video production, and interactive entertainment. However, existing approaches fail to accommodate all these requisite conditions. We present OmniShow, an end-to-end framework tailored for this practical yet challenging task, capable of harmonizing multimodal conditions and delivering industry-grade performance. To overcome the trade-off between controllability and quality, we introduce Unified Channel-wise Conditioning for efficient image and pose injection, and Gated Local-Context Attention to ensure precise audio-visual synchronization. To effectively address data scarcity, we develop a Decoupled-Then-Joint Training strategy that leverages a multi-stage training process with model merging to efficiently harness heterogeneous sub-task datasets. Furthermore, to fill the evaluation gap in this field, we establish HOIVG-Bench, a dedicated and comprehensive benchmark for HOIVG. Extensive experiments demonstrate that OmniShow achieves overall state-of-the-art performance across various multimodal conditioning settings, setting a solid standard for the emerging HOIVG task.",
+    "summary": "这篇论文提出 OmniShow，面向 Human-Object Interaction Video Generation（HOIVG）任务：在同一个视频生成框架中同时接入文本、参考图像、音频和姿态条件，生成高质量的人物-物体交互视频。论文重点不是提出全新的生成 backbone，而是解决实际落地中多模态条件难统一、可控性与质量难兼顾、以及训练数据稀缺的问题。方法上，OmniShow 使用 Unified Channel-wise Conditioning 注入图像和姿态条件，用 Gated Local-Context Attention 改善音频-视觉同步，并设计 Decoupled-Then-Joint Training：先利用异构子任务数据分别训练，再通过联合训练和模型融合适配完整 HOIVG 任务。论文还提出 HOIVG-Bench，用于评估多模态条件下的人物-物体交互视频生成能力。",
+    "innovations": [
+      "定义并系统研究 HOIVG：同时由文本、参考图像、音频和姿态驱动的人物-物体交互视频生成任务。",
+      "提出 OmniShow 端到端框架，统一多种条件输入，在可控性、质量和工业级生成效果之间做折中。",
+      "设计 Unified Channel-wise Conditioning，用于高效注入图像与姿态条件。",
+      "提出 Gated Local-Context Attention，以增强音频和视觉动作之间的局部同步。",
+      "提出 Decoupled-Then-Joint Training，通过多阶段训练、异构子任务数据利用和模型融合缓解完整多模态数据稀缺。",
+      "建立 HOIVG-Bench，为多模态人物-物体交互视频生成提供专门评测基准。"
+    ],
+    "source_url": "https://arxiv.org/abs/2604.11804",
+    "canonical_url": "https://doi.org/10.48550/arXiv.2604.11804",
+    "pdf_url": "https://arxiv.org/pdf/2604.11804",
+    "added_at": "2026-04-24",
+    "added_at_ts": "2026-04-24T17:10:38+08:00",
+    "sort_timestamp": "2026-04-13",
+    "notes": "依据用户转发截图识别标题与 arXiv 编号 2604.11804，已基于 arXiv 原文核实收录。当前版本为 v2（2026-04-17 修订）；项目页：https://correr-zhou.github.io/OmniShow/。Subjects: cs.CV。"
   }
 ]
