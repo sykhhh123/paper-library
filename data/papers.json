@@ -581,5 +581,52 @@
     "added_at_ts": "2026-04-30T12:58:59+08:00",
     "sort_timestamp": "2026-04-29",
     "notes": "依据用户截图识别标题与 arXiv 编号 2604.26694，并已基于 arXiv 原文和项目页核实收录。Project page: https://sharinka0715.github.io/X-WAM/ Code page listed as coming soon: https://github.com/sharinka0715/X-WAM Subjects: cs.RO, cs.AI, cs.CV。"
+  },
+  {
+    "id": "llavaction-evaluating-training-mllms-action-understanding",
+    "type": "paper",
+    "title": "LLaVAction: evaluating and training multi-modal large language models for action understanding",
+    "authors": [
+      "Haozhe Qi",
+      "Shaokai Ye",
+      "Alexander Mathis",
+      "Mackenzie W. Mathis"
+    ],
+    "year": 2026,
+    "date_published": "2025-03-24",
+    "venue": "ICLR 2026",
+    "categories": [
+      "Action Understanding",
+      "Multimodal Models",
+      "Egocentric Video"
+    ],
+    "keywords": [
+      "LLaVAction",
+      "MLLM",
+      "action understanding",
+      "action recognition",
+      "egocentric video",
+      "EPIC-KITCHENS-100",
+      "EPIC-KITCHENS-100-MQA",
+      "video question answering",
+      "supervised finetuning",
+      "action token"
+    ],
+    "abstract": "理解人类行为需要测量行为动作。由于行为本身复杂，最合适的表示方式往往是语言这类丰富的语义结构。新兴的多模态大语言模型（MLLM）是有前景的候选方案，但其细粒度动作理解能力尚未被充分检验。本文将 EPIC-KITCHENS-100 这一大型且具有挑战性的第一视角动作识别数据集重新表述为 MLLM benchmark：EPIC-KITCHENS-100-MQA。作者发现，当用 specialist model 采样出的困难答案作为干扰项时，领先 MLLM 仍难以识别正确动作。为提升性能，作者构建了一个监督微调数据集，涵盖“困难”动作识别、时间检测、captioning 和自由形式问答，以增强模型多样化动作理解能力。论文提出 LLaVAction：通过加入 action token 提升模型对视觉 token 的注意力，并使用两阶段流程获得结构化动作。LLaVAction 显著提升 MLLM 的动作理解能力，在 EPIC-KITCHENS-100-MQA 上相比 GPT-4o 提高 21 个准确率点，并在既有动作识别 benchmark 上取得强改进，表明这些方法使 MLLM 更适合复杂动作任务。代码、数据、benchmark 和模型已开源。",
+    "summary": "这篇论文关注 MLLM 是否真的能理解细粒度人类动作，尤其是第一视角视频中的动作。作者把 EPIC-KITCHENS-100 改造成多选问答 benchmark EPIC-KITCHENS-100-MQA，并刻意用 specialist model 生成困难干扰项，发现现有强 MLLM 在动作识别上仍很脆弱。为此，论文构建监督微调数据，覆盖困难动作识别、时间检测、captioning 和自由问答，并提出 LLaVAction：一方面加入 action token，让模型更关注视觉 token 中与动作相关的信息；另一方面用两阶段 pipeline 输出结构化动作。它在 EPIC-KITCHENS-100-MQA 上比 GPT-4o 高 21 个点，并提升多个动作识别/视频理解 benchmark。对 embodied AI 的意义在于：它不是直接训练机器人策略，但补上了通用多模态模型对人类动作、第一视角视频和时序行为语义的理解短板，这对从人类演示数据学习、动作语义标注和 VLA 前端感知都有价值。",
+    "innovations": [
+      "将 EPIC-KITCHENS-100 重新构造成面向 MLLM 的 EPIC-KITCHENS-100-MQA benchmark，用于评估细粒度 egocentric action understanding。",
+      "使用 specialist model 采样困难干扰答案，揭示领先 MLLM 在细粒度动作识别上的脆弱性。",
+      "构建覆盖 hard action recognition、temporal detection、captioning 和 free-form QA 的监督微调数据，以提升多样化动作理解能力。",
+      "提出 LLaVAction，在模型中加入 action token，以增强对视觉 token 中动作相关信息的注意。",
+      "设计两阶段 pipeline 来获得结构化动作输出，并在 EPIC-KITCHENS-100-MQA、EPIC-KITCHENS-100 Challenge 及其他视频动作 benchmark 上展示显著提升。"
+    ],
+    "source_url": "https://arxiv.org/abs/2503.18712",
+    "canonical_url": "https://doi.org/10.48550/arXiv.2503.18712",
+    "pdf_url": "https://arxiv.org/pdf/2503.18712",
+    "added_at": "2026-04-30",
+    "added_at_ts": "2026-04-30T18:43:20+08:00",
+    "sort_timestamp": "2026-01-12",
+    "notes": "依据用户截图识别标题后，已找到并基于 arXiv 原文、GitHub README 和项目页核实收录。arXiv v1 提交于 2025-03-24，v2 修订于 2026-01-12；Journal reference: International Conference on Learning Representations (ICLR) 2026。Code/data/project: https://github.com/AdaptiveMotorControlLab/LLaVAction Project page: https://mmathislab.github.io/llavaction/ Subjects: cs.CV。"
   }
 ]
