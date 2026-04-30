@@ -526,5 +526,60 @@
     "added_at_ts": "2026-04-28T19:06:00+08:00",
     "sort_timestamp": "2026-04-26",
     "notes": "依据用户提供的 arXiv HTML 链接收录，已基于 arXiv abs/html 原文核实。Dataset page: https://robotdata-market.jdcloud.com/console/market Subjects: cs.RO。"
+  },
+  {
+    "id": "x-wam-unified-4d-world-action-modeling-video-priors-asynchronous-denoising",
+    "type": "paper",
+    "title": "Unified 4D World Action Modeling from Video Priors with Asynchronous Denoising",
+    "authors": [
+      "Jun Guo",
+      "Qiwei Li",
+      "Peiyan Li",
+      "Zilong Chen",
+      "Nan Sun",
+      "Yifei Su",
+      "Heyun Wang",
+      "Yuan Zhang",
+      "Xinghang Li",
+      "Huaping Liu"
+    ],
+    "year": 2026,
+    "date_published": "2026-04-29",
+    "venue": "arXiv",
+    "categories": [
+      "Robotics",
+      "World Models",
+      "Vision-Language-Action"
+    ],
+    "keywords": [
+      "X-WAM",
+      "world action model",
+      "4D world model",
+      "robotic action execution",
+      "video diffusion",
+      "multi-view RGB-D video",
+      "3D reconstruction",
+      "asynchronous denoising",
+      "Asynchronous Noise Sampling",
+      "RoboCasa",
+      "RoboTwin 2.0"
+    ],
+    "abstract": "本文提出 X-WAM，一个统一的 4D World Action Model，在单一框架中统一实时机器人动作执行和高保真 4D 世界合成（视频 + 3D 重建）。它针对以往 unified world model（如 UWM）只建模 2D 像素空间、难以同时兼顾动作效率和世界建模质量的问题。为利用预训练视频 diffusion model 的强视觉先验，X-WAM 通过预测多视角 RGB-D 视频来想象未来世界，并采用轻量结构适配来高效获得空间信息：将预训练 Diffusion Transformer 的最后若干 block 复制为专门的深度预测分支，用于重建未来空间信息。论文还提出 Asynchronous Noise Sampling（ANS），联合优化生成质量和动作解码效率。ANS 在推理时使用专门的异步去噪日程，用较少步骤快速解码动作以支持实时执行，同时保留完整去噪步骤生成高保真视频；训练时不是完全解耦时间步，而是从联合分布采样以对齐推理分布。X-WAM 在超过 5,800 小时机器人数据上预训练，在 RoboCasa 和 RoboTwin 2.0 上分别达到 79.2% 和 90.7% 平均成功率，同时在视觉和几何指标上生成超过已有方法的高保真 4D 重建结果。",
+    "summary": "这篇论文提出 X-WAM，把机器人策略执行和世界模型生成放进同一个 4D World Action Model 中。核心动机是：机器人不仅要快速输出可执行动作，还需要形成带几何结构的未来世界预测；而已有 unified world model 多停留在 2D pixel-space，难以兼顾实时控制效率和高质量世界建模。X-WAM 基于预训练视频 diffusion model（项目页称 Wan2.2-5B），预测多视角 RGB-D 视频，并通过复制最后几个 DiT blocks 构造轻量 depth branch，从视频先验中扩展出 3D/4D 空间重建能力。另一个关键设计是 Asynchronous Noise Sampling：动作只用少量早期去噪步骤快速解码并执行，视频则继续完整去噪以保证高保真生成；训练时用联合噪声分布对齐这种推理行为。对 embodied AI 来说，它的价值在于尝试统一 world modeling、4D reconstruction 和 action decoding，为可实时执行且具备空间预测能力的机器人基础模型提供了一种训练与推理 recipe。",
+    "innovations": [
+      "提出 X-WAM，将实时 robotic action execution 与高保真 4D world synthesis（video + 3D reconstruction）统一到单一 World Action Model 框架。",
+      "利用预训练视频 diffusion model 的视觉先验，通过预测 multi-view RGB-D videos 来建模未来世界，而不只停留在 2D pixel-space。",
+      "设计轻量 depth adaptation：复制预训练 Diffusion Transformer 的最后若干 block 形成专门 depth branch，用于未来空间信息重建。",
+      "提出 Asynchronous Noise Sampling（ANS），让动作用少量去噪步骤快速解码以支持实时控制，视频则保留完整去噪过程以保证生成质量。",
+      "训练时从视频/动作噪声时间步的联合分布采样，而不是完全解耦，从而对齐异步推理分布。",
+      "在超过 5,800 小时机器人数据上预训练，并在 RoboCasa、RoboTwin 2.0 以及视觉/几何 4D 重建指标上展示较强结果。"
+    ],
+    "source_url": "https://arxiv.org/abs/2604.26694",
+    "canonical_url": "https://doi.org/10.48550/arXiv.2604.26694",
+    "pdf_url": "https://arxiv.org/pdf/2604.26694",
+    "added_at": "2026-04-30",
+    "added_at_ts": "2026-04-30T12:58:59+08:00",
+    "sort_timestamp": "2026-04-29",
+    "notes": "依据用户截图识别标题与 arXiv 编号 2604.26694，并已基于 arXiv 原文和项目页核实收录。Project page: https://sharinka0715.github.io/X-WAM/ Code page listed as coming soon: https://github.com/sharinka0715/X-WAM Subjects: cs.RO, cs.AI, cs.CV。"
   }
 ]
