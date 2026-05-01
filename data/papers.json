@@ -628,5 +628,71 @@
     "added_at_ts": "2026-04-30T18:43:20+08:00",
     "sort_timestamp": "2026-01-12",
     "notes": "依据用户截图识别标题后，已找到并基于 arXiv 原文、GitHub README 和项目页核实收录。arXiv v1 提交于 2025-03-24，v2 修订于 2026-01-12；Journal reference: International Conference on Learning Representations (ICLR) 2026。Code/data/project: https://github.com/AdaptiveMotorControlLab/LLaVAction Project page: https://mmathislab.github.io/llavaction/ Subjects: cs.CV。"
+  },
+  {
+    "id": "motubrain-advanced-world-action-model-robot-control",
+    "type": "paper",
+    "title": "MotuBrain: An Advanced World Action Model for Robot Control",
+    "authors": [
+      "MotuBrain Team",
+      "Chendong Xiang",
+      "Fan Bao",
+      "Haitian Liu",
+      "Hengkai Tan",
+      "Hongzhe Bi",
+      "James Li",
+      "Jiabao Liu",
+      "Jingrui Pang",
+      "Kiro Jing",
+      "Louis Liu",
+      "Mengchen Cai",
+      "Rongxu Cui",
+      "Ruowen Zhao",
+      "Runqing Wang",
+      "Shuhe Huang",
+      "Yao Feng",
+      "Yinze Rong",
+      "Zeyuan Wang",
+      "Jun Zhu"
+    ],
+    "year": 2026,
+    "date_published": "2026-04-30",
+    "venue": "arXiv",
+    "categories": [
+      "Robotics",
+      "World Models",
+      "Vision-Language-Action"
+    ],
+    "keywords": [
+      "MotuBrain",
+      "world action model",
+      "VLA",
+      "WAM",
+      "robot control",
+      "UniDiffuser",
+      "Mixture-of-Transformers",
+      "multiview representation",
+      "language-action coupling",
+      "cross-embodiment robot data",
+      "video generation",
+      "inverse dynamics"
+    ],
+    "abstract": "Vision-Language-Action（VLA）模型具备较强的语义泛化能力，但往往缺少对世界动力学的细粒度建模。近期工作开始将视频生成模型作为世界建模基础，并发展出同时建模视觉动力学与动作的统一 World Action Models（WAMs）。本文提出 MotuBrain，一个统一多模态生成模型，在 UniDiffuser 表述下以三流 Mixture-of-Transformers 架构联合建模视频与动作。单一模型支持多种推理模式，包括策略学习、世界建模、视频生成、逆动力学以及联合视频-动作预测，同时能够扩展到 video-only 数据和跨 embodiment 机器人数据等异构多模态数据。为提升真实世界可用性，MotuBrain 引入统一多视角表示、显式语言-动作耦合以及高效推理栈，实现超过 50 倍加速以支持实时部署。",
+    "summary": "这篇论文提出 MotuBrain，一个面向机器人控制的 World Action Model。它的目标是把 VLA 的语义泛化能力和世界模型的动力学预测能力合到同一个生成式框架里：不再把“预测未来视频”和“从视频反推动作”拆成 Video Generation Model + Inverse Dynamics Model，而是在 UniDiffuser 框架下用三流 Mixture-of-Transformers 同时建模语言、视频和动作。一个模型可以在不同推理模式下承担 policy learning、world modeling、video generation、inverse dynamics、joint video-action prediction 等任务，并能利用 video-only 数据、跨 embodiment 机器人数据等异构数据。论文还强调工程落地：统一 multiview representation、显式 language-action coupling，以及高效推理栈，使其可面向实时机器人部署。对 embodied AI 来说，这类工作直接对应“用大规模视频/机器人数据训练可预测世界又能输出动作的统一基础模型”这条路线。",
+    "innovations": [
+      "提出 MotuBrain，将视觉动力学建模与动作生成统一为单一 World Action Model，而不是 VGM + IDM 的两阶段流水线。",
+      "在 UniDiffuser 表述下使用三流 Mixture-of-Transformers 架构，联合建模语言、视频和动作。",
+      "单一模型支持 policy learning、world modeling、video generation、inverse dynamics 和 joint video-action prediction 等多种推理模式。",
+      "可扩展到 video-only 数据、跨 embodiment 机器人数据以及部分模态缺失的异构多模态数据，提升数据利用范围。",
+      "引入统一多视角表示与显式 language-action coupling，以增强真实机器人场景中的动作可控性和跨视角一致性。",
+      "构建高效推理栈，实现超过 50 倍加速，面向实时机器人部署。"
+    ],
+    "source_url": "https://arxiv.org/abs/2604.27792",
+    "canonical_url": "https://doi.org/10.48550/arXiv.2604.27792",
+    "pdf_url": "https://arxiv.org/pdf/2604.27792",
+    "added_at": "2026-05-01",
+    "added_at_ts": "2026-05-01T14:12:10+08:00",
+    "sort_timestamp": "2026-04-30",
+    "notes": "依据用户截图识别标题与 arXiv 编号 2604.27792，并已基于 arXiv 原文和 ShengShu 官方项目页核实收录。Project page: https://www.shengshu.com/en/motubrain Subjects: cs.RO。arXiv DOI 当前标注为 pending registration。"
   }
 ]
