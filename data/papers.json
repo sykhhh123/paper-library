@@ -694,5 +694,65 @@
     "added_at_ts": "2026-05-01T14:12:10+08:00",
     "sort_timestamp": "2026-04-30",
     "notes": "依据用户截图识别标题与 arXiv 编号 2604.27792，并已基于 arXiv 原文和 ShengShu 官方项目页核实收录。Project page: https://www.shengshu.com/en/motubrain Subjects: cs.RO。arXiv DOI 当前标注为 pending registration。"
+  },
+  {
+    "id": "last-r1-reinforcing-action-adaptive-physical-latent-reasoning-vla",
+    "type": "paper",
+    "title": "LaST-R1: Reinforcing Action via Adaptive Physical Latent Reasoning for VLA Models",
+    "authors": [
+      "Hao Chen",
+      "Jiaming Liu",
+      "Zhonghao Yan",
+      "Nuowei Han",
+      "Renrui Zhang",
+      "Chenyang Gu",
+      "Jialin Gao",
+      "Ziyu Guo",
+      "Siyuan Qian",
+      "Yinxi Wang",
+      "Peng Jia",
+      "Chi-Wing Fu",
+      "Shanghang Zhang",
+      "Pheng-Ann Heng"
+    ],
+    "year": 2026,
+    "date_published": "2026-04-30",
+    "venue": "arXiv",
+    "categories": [
+      "Robotics",
+      "Vision-Language-Action",
+      "Reinforcement Learning"
+    ],
+    "keywords": [
+      "LaST-R1",
+      "VLA",
+      "latent reasoning",
+      "latent Chain-of-Thought",
+      "physical reasoning",
+      "robot manipulation",
+      "reinforcement learning",
+      "RL post-training",
+      "LAPO",
+      "adaptive latent CoT",
+      "LIBERO",
+      "sim-to-real"
+    ],
+    "abstract": "Vision-Language-Action（VLA）模型越来越多地引入 reasoning 机制来处理复杂机器人操作，但现有方法存在关键局限：显式语言推理有延迟和离散化问题，而更具表达力的连续 latent reasoning 又主要局限于静态 imitation learning，限制了适应性和泛化能力。虽然已有工作将在线 reinforcement learning 引入 VLA 以支持试错探索，但这些方法通常只优化普通动作空间，绕过了底层物理 reasoning 过程。本文提出 LaST-R1，一个统一 VLA 框架，在动作执行前整合面向物理动力学的 latent Chain-of-Thought（CoT）reasoning，并配套定制 RL 后训练范式。具体地，作者提出 Latent-to-Action Policy Optimization（LAPO），一种同时优化 latent reasoning 过程与动作生成的新型 RL 算法。通过连接 reasoning 与控制，LAPO 改善了物理世界建模表征，并增强交互环境中的鲁棒性。论文还引入 adaptive latent CoT 机制，使策略能根据环境复杂度动态调整 reasoning horizon。大量实验显示，LaST-R1 仅用 one-shot supervised warm-up 就在 LIBERO benchmark 上达到 99.8% 平均成功率，显著提升收敛速度和性能；真实部署中，LAPO 后训练在四个复杂任务上相较初始 warm-up policy 最高带来 44% 提升，并展示了跨仿真与真实环境的强泛化。",
+    "summary": "这篇论文把“VLA 的推理能力”和“RL 后训练”直接接到机器人控制上。作者认为，现有 VLA reasoning 要么用显式语言推理，慢且离散；要么用连续 latent reasoning，但大多停留在静态模仿学习；而现有在线 RL 又主要优化 action output，没有优化生成动作之前的物理 reasoning。LaST-R1 的核心是：在动作执行前加入 latent CoT，对物理动力学进行隐空间推理；再通过 LAPO 同时优化 latent reasoning 和 action generation。这样模型不仅学“该输出什么动作”，还学“应该如何在隐空间里推演物理后果再行动”。adaptive latent CoT 则让模型根据环境复杂度动态决定推理长度。实验上，LaST-R1 在 LIBERO 上用极少 warm-up 达到 99.8% 成功率，并在真实单臂/双臂任务中通过 RL post-training 取得明显提升。对 embodied AI 来说，它很值得关注：这是 VLA 从静态 imitation 向可交互、可试错、能优化物理 reasoning 的方向推进。",
+    "innovations": [
+      "提出 LaST-R1，将面向物理动力学的 latent Chain-of-Thought reasoning 接入 VLA，在动作执行前进行隐空间物理推演。",
+      "提出 Latent-to-Action Policy Optimization（LAPO），用 RL 同时优化 latent reasoning process 与 action generation，而不是只优化动作空间。",
+      "通过把 reasoning 和 control 桥接起来，提升物理世界建模表征与交互环境中的鲁棒性。",
+      "设计 adaptive latent CoT 机制，使策略能根据环境复杂度动态调整 reasoning horizon。",
+      "在 LIBERO 上用 one-shot supervised warm-up 达到 99.8% 平均成功率，并显著提升收敛速度。",
+      "在真实机器人单臂和双臂复杂任务中展示 LAPO post-training 的有效性，最高相对初始 warm-up policy 提升 44%。"
+    ],
+    "source_url": "https://arxiv.org/abs/2604.28192",
+    "canonical_url": "https://doi.org/10.48550/arXiv.2604.28192",
+    "pdf_url": "https://arxiv.org/pdf/2604.28192",
+    "added_at": "2026-05-01",
+    "added_at_ts": "2026-05-01T23:38:48+08:00",
+    "sort_timestamp": "2026-04-30",
+    "notes": "依据用户关键词 lastR1 检索并识别为 LaST-R1，已基于 arXiv 原文核实收录。Subjects: cs.RO, cs.CV。arXiv DOI 当前标注为 pending registration。"
   }
 ]
