@@ -754,5 +754,60 @@
     "added_at_ts": "2026-05-01T23:38:48+08:00",
     "sort_timestamp": "2026-04-30",
     "notes": "依据用户关键词 lastR1 检索并识别为 LaST-R1，已基于 arXiv 原文核实收录。Subjects: cs.RO, cs.CV。arXiv DOI 当前标注为 pending registration。"
+  },
+  {
+    "id": "think-then-generate-reasoning-aware-text-to-image-diffusion-llm-encoders",
+    "type": "paper",
+    "title": "Think-Then-Generate: Reasoning-Aware Text-to-Image Diffusion with LLM Encoders",
+    "authors": [
+      "Siqi Kou",
+      "Jiachun Jin",
+      "Zetong Zhou",
+      "Ye Ma",
+      "Yugang Wang",
+      "Quan Chen",
+      "Peng Jiang",
+      "Xiao Yang",
+      "Jun Zhu",
+      "Kai Yu",
+      "Zhijie Deng"
+    ],
+    "year": 2026,
+    "date_published": "2026-01-15",
+    "venue": "arXiv",
+    "categories": [
+      "Text-to-Image Generation",
+      "Diffusion Models",
+      "Reasoning Models"
+    ],
+    "keywords": [
+      "Think-Then-Generate",
+      "T2G",
+      "text-to-image diffusion",
+      "LLM encoder",
+      "reasoning-aware generation",
+      "prompt rewriting",
+      "Dual-GRPO",
+      "image-grounded rewards",
+      "world knowledge",
+      "semantic alignment",
+      "WISE"
+    ],
+    "abstract": "文本到图像（T2I）扩散模型已经能够从多样文本提示生成高质量视觉内容。然而，多数现有 T2I 扩散模型，即使配备基于大语言模型（LLM）的文本编码器，仍主要是 text-pixel mapper：它们只是把 LLM 当作文本编码器使用，并未利用 LLM 固有的推理能力来判断给定文本提示应该在视觉上描绘什么。为超越这种字面生成，本文提出 think-then-generate（T2G）范式：鼓励基于 LLM 的文本编码器先对原始用户提示进行推理和改写，再把改写提示的状态作为扩散条件。为实现这一点，作者首先通过轻量监督微调激活 LLM 编码器的 think-then-rewrite 模式；随后通过 Dual-GRPO 联合优化 LLM 编码器和扩散主干，以保证对上下文的忠实推理和对语义的准确渲染。具体而言，文本编码器通过图像 grounded reward 被强化，以推断和回忆世界知识；扩散主干则被推动生成语义一致且视觉连贯的图像。实验显示，该方法在基于推理的图像生成和编辑基准上显著提升事实一致性、语义对齐和视觉真实感，WISE 分数达到 0.79，接近 GPT-4o。",
+    "summary": "这篇论文关注一个很现实的问题：当前很多 T2I diffusion 虽然换上了 LLM/VLM encoder，但本质仍把它当“强文本编码器”，没有让它真的在生成前推理。Think-Then-Generate 的做法是把生成流程改成“先想再画”：LLM encoder 先对原始 prompt 进行 reasoning 和 rewrite，把隐含的世界知识、物理常识、对象关系等补出来；改写后的表示再作为 diffusion conditioning。训练上先用轻量 SFT 激活 think-then-rewrite 行为，再用 Dual-GRPO 联合优化文本编码器与 diffusion backbone：文本侧通过 image-grounded reward 学会召回和推断世界知识，图像侧则被奖励生成语义一致、视觉连贯的结果。对多模态基础模型来说，它的价值在于把 RL/reasoning 训练从纯语言扩展到图像生成前端，让生成模型不只是字面匹配 prompt，而是能围绕 prompt 做可视化推理。虽然它不是 embodied/robotics 论文，但和 reasoning-aware multimodal generation、world knowledge grounding、下一代统一模型训练 recipe 有关系。",
+    "innovations": [
+      "提出 think-then-generate（T2G）范式，让 LLM-based text encoder 在图像生成前先对原始 prompt 进行推理和改写。",
+      "把改写提示的中间状态作为 diffusion conditioning，使生成过程利用 LLM 的世界知识和上下文推理能力，而不只是文本编码。",
+      "通过轻量监督微调激活 LLM encoder 的 think-then-rewrite 模式，为后续联合优化提供初始化。",
+      "提出 Dual-GRPO 联合优化 LLM encoder 与 diffusion backbone：文本侧用 image-grounded rewards 强化推理和知识召回，图像侧强化语义一致性与视觉连贯性。",
+      "在 reasoning-based image generation 与 editing benchmark 上提升事实一致性、语义对齐和视觉真实感，WISE 分数达到 0.79，接近 GPT-4o。"
+    ],
+    "source_url": "https://arxiv.org/abs/2601.10332",
+    "canonical_url": "https://doi.org/10.48550/arXiv.2601.10332",
+    "pdf_url": "https://arxiv.org/pdf/2601.10332",
+    "added_at": "2026-05-02",
+    "added_at_ts": "2026-05-02T10:45:41+08:00",
+    "sort_timestamp": "2026-01-15",
+    "notes": "依据用户截图识别标题与 arXiv 编号 2601.10332，并已基于 arXiv 原文和 GitHub 跳转核实收录。Code/project: https://github.com/SJTU-DENG-Lab/Think-Then-Generate （截图原链 zhijie-group/think-then-generate 跳转至该仓库）。Subjects: cs.CV。"
   }
 ]
