@@ -809,5 +809,64 @@
     "added_at_ts": "2026-05-02T10:45:41+08:00",
     "sort_timestamp": "2026-01-15",
     "notes": "依据用户截图识别标题与 arXiv 编号 2601.10332，并已基于 arXiv 原文和 GitHub 跳转核实收录。Code/project: https://github.com/SJTU-DENG-Lab/Think-Then-Generate （截图原链 zhijie-group/think-then-generate 跳转至该仓库）。Subjects: cs.CV。"
+  },
+  {
+    "id": "mocapanything-v2-end-to-end-motion-capture-arbitrary-skeletons",
+    "type": "paper",
+    "title": "MoCapAnything V2: End-to-End Motion Capture for Arbitrary Skeletons",
+    "authors": [
+      "Kehong Gong",
+      "Zhengyu Wen",
+      "Dao Thien Phong",
+      "Mingxi Xu",
+      "Weixia He",
+      "Qi Wang",
+      "Ning Zhang",
+      "Zhengyu Li",
+      "Guanli Hou",
+      "Dongze Lian",
+      "Xiaoyu He",
+      "Mingyuan Zhang",
+      "Hanwang Zhang"
+    ],
+    "year": 2026,
+    "date_published": "2026-04-30",
+    "venue": "arXiv",
+    "categories": [
+      "Motion Capture",
+      "Computer Vision",
+      "Animation"
+    ],
+    "keywords": [
+      "MoCapAnything V2",
+      "motion capture",
+      "arbitrary skeletons",
+      "monocular video",
+      "Video-to-Pose",
+      "Pose-to-Rotation",
+      "inverse kinematics",
+      "end-to-end learning",
+      "skeleton-aware attention",
+      "GL-GMHA",
+      "Truebones Zoo",
+      "Objaverse"
+    ],
+    "abstract": "从单目视频进行任意骨架运动捕捉的近期方法通常采用分解式流水线：先由 Video-to-Pose 网络预测关节位置，再通过解析 inverse kinematics（IK）阶段恢复关节旋转。虽然这种设计有效，但存在内在局限：关节位置并不能完全决定旋转，会留下骨轴 twist 等自由度的歧义；同时，不可微的 IK 阶段也阻止系统适应有噪声的预测，或直接针对最终动画目标优化。本文提出首个完全端到端框架，其中 Video-to-Pose 和 Pose-to-Rotation 两个阶段都是可学习的，并进行联合优化。作者观察到 pose-to-rotation 映射中的歧义来自坐标系信息缺失：相同关节位置在不同 rest pose 和局部轴约定下可能对应不同旋转。为解决这一点，论文从目标资产中引入 reference pose-rotation pair，并结合 rest pose 来锚定映射和定义底层旋转坐标系，从而把旋转预测转化为约束良好的条件问题。模型还直接从视频预测关节位置，不依赖 mesh 中间表示，提升鲁棒性和效率。两个阶段共享 skeleton-aware Global-Local Graph-guided Multi-Head Attention（GL-GMHA）模块，用于关节级局部推理和全局协调。Truebones Zoo 与 Objaverse 实验显示，该方法将旋转误差从约 17 度降至约 10 度，在未见骨架上达到 6.54 度，同时推理速度比基于 mesh 的流水线快约 20 倍。",
+    "summary": "这篇论文解决任意骨架 motion capture 中一个关键瓶颈：过去从单目视频到动画通常先预测关节位置，再用解析 IK 求旋转，但位置并不唯一决定旋转，尤其骨轴 twist 等自由度会产生歧义；而 IK 又不可微，难以端到端优化。MoCapAnything V2 把流程改成端到端可学习：Video-to-Pose 和 Pose-to-Rotation 都由模型预测并联合训练。它的关键观察是，旋转歧义不是单纯网络能力不足，而是缺少目标资产的坐标系约束；因此作者引入目标资产的 reference pose-rotation pair 加上 rest pose，作为条件来定义旋转坐标系并锚定映射。方法还避免 mesh 中间步骤，直接从视频预测 joints，并用 skeleton-aware GL-GMHA 同时建模局部关节关系和全局骨架协调。对 embodied/animation 数据来说，这类任意骨架、端到端、跨 skeleton 泛化的 mocap 技术有潜在价值：它能更高效地把视频动作转成可控骨架动画，可服务于人类动作数据处理、仿真角色驱动和跨形态运动迁移。",
+    "innovations": [
+      "提出首个面向 arbitrary-skeleton monocular motion capture 的完全端到端框架，将 Video-to-Pose 与 Pose-to-Rotation 都设为可学习并联合优化。",
+      "指出 pose-to-rotation 歧义源于缺失坐标系信息：相同关节位置在不同 rest pose 和局部轴约定下可对应不同旋转。",
+      "引入目标资产的 reference pose-rotation pair，并结合 rest pose 来锚定旋转映射和定义底层坐标系，使旋转预测成为约束良好的条件问题。",
+      "直接从视频预测关节位置，不依赖 mesh 中间表示，提高鲁棒性与推理效率。",
+      "设计 skeleton-aware Global-Local Graph-guided Multi-Head Attention（GL-GMHA），支持关节级局部推理与全局骨架协调。",
+      "在 Truebones Zoo 和 Objaverse 上显著降低旋转误差，并实现约 20 倍于 mesh-based pipelines 的推理加速。"
+    ],
+    "source_url": "https://arxiv.org/abs/2604.28130",
+    "canonical_url": "https://doi.org/10.48550/arXiv.2604.28130",
+    "pdf_url": "https://arxiv.org/pdf/2604.28130",
+    "added_at": "2026-05-02",
+    "added_at_ts": "2026-05-02T21:57:32+08:00",
+    "sort_timestamp": "2026-04-30",
+    "notes": "依据用户提供的 arXiv PDF 链接收录，并已基于 arXiv abs 原文和项目页核实。Project page: https://animotionlab.github.io/MoCapAnythingV2/ Subjects: cs.CV。arXiv DOI 当前标注为 pending registration。"
   }
 ]
