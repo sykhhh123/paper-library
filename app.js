@@ -6,6 +6,8 @@ async function loadPapers() {
   return response.json();
 }
 
+const PAGE_SIZE = 5;
+
 function uniqueValues(items, key) {
   return [...new Set(items.flatMap(item => item[key] || []))].sort();
 }
@@ -97,17 +99,55 @@ function matchesDate(item, presetValue, fromValue, toValue) {
   return true;
 }
 
-function render(items) {
-  const list = document.getElementById('paperList');
-  const stats = document.getElementById('stats');
-  stats.textContent = `共 ${items.length} 条收录`;
+function renderPagination(totalItems, currentPage, pageCount, onPageChange) {
+  const pagination = document.getElementById('pagination');
+  if (!pagination) return;
 
-  if (!items.length) {
-    list.innerHTML = document.getElementById('emptyStateTemplate').innerHTML;
+  if (totalItems <= PAGE_SIZE) {
+    pagination.innerHTML = '';
     return;
   }
 
-  list.innerHTML = items.map(item => {
+  const pages = Array.from({ length: pageCount }, (_, index) => index + 1);
+  pagination.innerHTML = `
+    <button class="page-button" type="button" data-page="${currentPage - 1}" ${currentPage === 1 ? 'disabled' : ''}>上一页</button>
+    <div class="page-numbers">
+      ${pages.map(page => `<button class="page-button ${page === currentPage ? 'active' : ''}" type="button" data-page="${page}" aria-current="${page === currentPage ? 'page' : 'false'}">${page}</button>`).join('')}
+    </div>
+    <button class="page-button" type="button" data-page="${currentPage + 1}" ${currentPage === pageCount ? 'disabled' : ''}>下一页</button>
+  `;
+
+  pagination.querySelectorAll('button[data-page]').forEach(button => {
+    button.addEventListener('click', () => {
+      const nextPage = Number(button.dataset.page);
+      if (Number.isFinite(nextPage) && nextPage >= 1 && nextPage <= pageCount) {
+        onPageChange(nextPage);
+      }
+    });
+  });
+}
+
+function render(items, currentPage, onPageChange) {
+  const list = document.getElementById('paperList');
+  const stats = document.getElementById('stats');
+  const pageCount = Math.max(1, Math.ceil(items.length / PAGE_SIZE));
+  const safePage = Math.min(Math.max(currentPage, 1), pageCount);
+  const start = (safePage - 1) * PAGE_SIZE;
+  const pageItems = items.slice(start, start + PAGE_SIZE);
+
+  stats.textContent = items.length
+    ? `共 ${items.length} 条收录 · 第 ${safePage}/${pageCount} 页 · 当前显示 ${start + 1}-${start + pageItems.length}`
+    : '共 0 条收录';
+
+  if (!items.length) {
+    list.innerHTML = document.getElementById('emptyStateTemplate').innerHTML;
+    renderPagination(0, 1, 1, onPageChange);
+    return;
+  }
+
+  renderPagination(items.length, safePage, pageCount, onPageChange);
+
+  list.innerHTML = pageItems.map(item => {
     const categories = (item.categories || []).map(v => `<span class="tag">${escapeHtml(v)}</span>`).join('');
     const keywords = (item.keywords || []).slice(0, 8).map(v => `<span class="tag">#${escapeHtml(v)}</span>`).join('');
     const innovations = (item.innovations || []).map(v => `<li>${escapeHtml(v)}</li>`).join('');
@@ -149,6 +189,7 @@ function setup(items) {
   const datePresetFilter = document.getElementById('datePresetFilter');
   const dateFrom = document.getElementById('dateFrom');
   const dateTo = document.getElementById('dateTo');
+  let currentPage = 1;
 
   uniqueTypes(items).forEach(type => {
     const option = document.createElement('option');
@@ -164,7 +205,11 @@ function setup(items) {
     categoryFilter.appendChild(option);
   });
 
-  function update() {
+  function update(options = {}) {
+    if (options.resetPage) {
+      currentPage = 1;
+    }
+
     const query = searchInput.value.trim();
     const type = typeFilter.value;
     const category = categoryFilter.value;
@@ -181,43 +226,50 @@ function setup(items) {
       return okQuery && okType && okCategory && okDate;
     });
 
-    render(sortItems(filtered, sortBy));
+    const sorted = sortItems(filtered, sortBy);
+    const pageCount = Math.max(1, Math.ceil(sorted.length / PAGE_SIZE));
+    currentPage = Math.min(currentPage, pageCount);
+    render(sorted, currentPage, nextPage => {
+      currentPage = nextPage;
+      update();
+      document.getElementById('stats').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
   }
 
-  searchInput.addEventListener('input', update);
-  typeFilter.addEventListener('change', update);
-  categoryFilter.addEventListener('change', update);
-  sortSelect.addEventListener('change', update);
+  searchInput.addEventListener('input', () => update({ resetPage: true }));
+  typeFilter.addEventListener('change', () => update({ resetPage: true }));
+  categoryFilter.addEventListener('change', () => update({ resetPage: true }));
+  sortSelect.addEventListener('change', () => update({ resetPage: true }));
   datePresetFilter.addEventListener('change', () => {
     if (datePresetFilter.value) {
       dateFrom.value = '';
       dateTo.value = '';
     }
-    update();
+    update({ resetPage: true });
   });
   dateFrom.addEventListener('input', () => {
     if (dateFrom.value || dateTo.value) {
       datePresetFilter.value = '';
     }
-    update();
+    update({ resetPage: true });
   });
   dateFrom.addEventListener('change', () => {
     if (dateFrom.value || dateTo.value) {
       datePresetFilter.value = '';
     }
-    update();
+    update({ resetPage: true });
   });
   dateTo.addEventListener('input', () => {
     if (dateFrom.value || dateTo.value) {
       datePresetFilter.value = '';
     }
-    update();
+    update({ resetPage: true });
   });
   dateTo.addEventListener('change', () => {
     if (dateFrom.value || dateTo.value) {
       datePresetFilter.value = '';
     }
-    update();
+    update({ resetPage: true });
   });
 
   update();
