@@ -947,5 +947,56 @@
     "added_at_ts": "2026-05-06T10:30:49+08:00",
     "sort_timestamp": "2026-05-04",
     "notes": "依据用户提供的 arXiv PDF 链接收录，并已基于 arXiv abs 原文核实。Project page: https://allenai.org/blog/molmoact2 （arXiv comments 给出；当前直接抓取返回 403）。Comments: 31 pages. Subjects: cs.RO。arXiv DOI 当前标注为 pending registration。"
+  },
+  {
+    "id": "reconstruction-semantics-latent-space-robotic-world-models",
+    "type": "paper",
+    "title": "Reconstruction or Semantics? What Makes a Latent Space Useful for Robotic World Models",
+    "authors": [
+      "Nilaksh",
+      "Saurav Jha",
+      "Artem Zholus",
+      "Sarath Chandar"
+    ],
+    "year": 2026,
+    "date_published": "2026-05-07",
+    "venue": "arXiv",
+    "categories": [
+      "Robotics",
+      "World Models",
+      "Representation Learning"
+    ],
+    "keywords": [
+      "robotic world models",
+      "latent diffusion models",
+      "semantic latent space",
+      "reconstruction latent space",
+      "action-conditioned video diffusion",
+      "BridgeV2",
+      "V-JEPA 2.1",
+      "Web-DINO",
+      "SigLIP 2",
+      "VAE",
+      "Cosmos",
+      "policy evaluation",
+      "planning",
+      "latent representation quality"
+    ],
+    "abstract": "基于 world model 的策略评估可以作为测试真实机器人控制的一种实用代理：在 action-conditioned video diffusion model 中 rollout 候选动作，观察预测结果。随着这类模型越来越多采用 latent diffusion modeling（LDM），选择合适的 latent space 变得关键。现有默认做法通常使用 VAE 等主要为像素重建训练的 autoencoding latent space，但近期工作表明，来自预训练编码器、与表征语义对齐的 semantic latent space 可能更有利。本文系统评估这些 latent space 在 action-conditioned LDM 中的作用：在 BridgeV2 数据集上，用固定协议比较六种 reconstruction 与 semantic encoder 训练的 world model 变体，并证明即使在高维表示空间中、无论是否做维度压缩，也能有效训练 world model。作者提出三条轴线评估 robotic world model：视觉保真度、规划与下游策略性能、latent representation quality。结果表明，只看视觉保真度不足以选择 world model。虽然 VAE 和 Cosmos 等 reconstruction encoder 在像素级指标上表现强，但 V-JEPA 2.1（策略表现整体最强）、Web-DINO 和 SigLIP 2 等 semantic encoder 在另外两条轴线上、跨不同模型规模通常更好。论文主张 semantic latent space 是更适合作为 policy-relevant robotics diffusion world model 的基础。",
+    "summary": "这篇论文直接回应了“world model 能力到底靠像素重建，还是靠语义表征”的关键问题。作者不只比较生成视频好不好看，而是在 BridgeV2 上固定训练协议，比较六种 latent encoder 对 action-conditioned diffusion world model 的影响，并把评估拆成三类：visual fidelity、planning/downstream policy performance、latent representation quality。核心结论是：像素指标好的 latent 不一定更适合机器人。VAE/Cosmos 这类 reconstruction latent 能拿到更强 pixel-level score，但更语义化的 V-JEPA 2.1、Web-DINO、SigLIP 2 更能支撑规划和策略相关性能。对你的 paper-library taste 来说，这篇很重要：它把 world model 的瓶颈从“模型能不能重建画面”转向“latent space 是否保留对动作、任务和物理交互有用的结构”，也提供了一套更贴近机器人使用场景的筛选/评估轴线。",
+    "innovations": [
+      "系统比较 reconstruction latent space 与 semantic latent space 对 robotic action-conditioned LDM world model 的影响，而不是只比较视频生成质量。",
+      "在 BridgeV2 上使用固定协议训练多种 world model 变体，比较六种 reconstruction/semantic encoder，并覆盖有无维度压缩的高维表示空间。",
+      "提出三条评估轴线：visual fidelity、planning/downstream policy performance、latent representation quality，指出视觉保真度单独不足以选择机器人 world model。",
+      "发现 VAE、Cosmos 等 reconstruction encoder 虽然 pixel-level scores 强，但 V-JEPA 2.1、Web-DINO、SigLIP 2 等 semantic encoder 在规划、策略和表征质量上通常更优。",
+      "把 latent-space 选择明确连接到 policy-relevant robotics world models，为后续数据筛选、表示预训练和模型评估提供了更实用的判断标准。"
+    ],
+    "source_url": "https://arxiv.org/abs/2605.06388",
+    "canonical_url": "https://doi.org/10.48550/arXiv.2605.06388",
+    "pdf_url": "https://arxiv.org/pdf/2605.06388",
+    "added_at": "2026-05-08",
+    "added_at_ts": "2026-05-08T12:10:21+08:00",
+    "sort_timestamp": "2026-05-07",
+    "notes": "根据用户提供的论文截图识别标题后，已核实 arXiv 原文。Project page: https://hskalin.github.io/semantic-wm/ 。Hugging Face: https://huggingface.co/Nilaksh404/semantic-wm 。Comments: 9 pages. Subjects: cs.CV; cs.LG; cs.RO。arXiv DOI 当前标注为 pending registration。"
   }
 ]
