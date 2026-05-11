@@ -998,5 +998,55 @@
     "added_at_ts": "2026-05-08T12:10:21+08:00",
     "sort_timestamp": "2026-05-07",
     "notes": "根据用户提供的论文截图识别标题后，已核实 arXiv 原文。Project page: https://hskalin.github.io/semantic-wm/ 。Hugging Face: https://huggingface.co/Nilaksh404/semantic-wm 。Comments: 9 pages. Subjects: cs.CV; cs.LG; cs.RO。arXiv DOI 当前标注为 pending registration。"
+  },
+  {
+    "id": "egghand-multimodal-foundation-model-egocentric-hand-pose-forecasting",
+    "type": "paper",
+    "title": "EggHand: A Multimodal Foundation Model for Egocentric Hand Pose Forecasting",
+    "authors": [
+      "Jaeyoung Choi",
+      "Hyeondong Kim",
+      "Yujin Kim",
+      "Daehee Park"
+    ],
+    "year": 2026,
+    "date_published": "2026-05-08",
+    "venue": "CVPR Findings 2026",
+    "categories": [
+      "Egocentric Vision",
+      "Embodied AI",
+      "Motion Forecasting"
+    ],
+    "keywords": [
+      "EggHand",
+      "egocentric hand pose forecasting",
+      "3D hand pose",
+      "foundation model",
+      "VLA",
+      "egocentric video-text encoder",
+      "action decoder",
+      "EgoExo4D",
+      "ego-motion robustness",
+      "language-conditioned control",
+      "human intention",
+      "AR/VR",
+      "human-robot interaction"
+    ],
+    "abstract": "从 egocentric video 预测未来 3D hand pose sequence 对理解人类意图以及 AR/VR 辅助、人机交互等具身应用非常重要。但这个任务很难：第一视角手部运动由复杂人类意图驱动，包含高度灵巧的关节运动，并且会受到 ego-motion 导致的剧烈视角变化影响。本文提出 EggHand，一个用于 egocentric hand pose forecasting 的 foundation-model-based 框架，将多模态语义推理与动态运动建模结合起来。方法把来自 Vision-Language-Action（VLA）模型的 action decoder 与 egocentric video-text encoder 结合：前者捕捉手部运动的结构化时间动态，后者提供从大规模第一视角视频中学习到的 viewpoint-aware contextual information。两者共同缓解通用视觉编码器在 ego-motion 下的脆弱性，并在不依赖 body pose 或外部 tracking 的情况下，实现对运动、上下文和高层意图的联合推理。EgoExo4D 实验表明，EggHand 在预测精度上达到新的 SOTA，在强 ego-motion 下保持鲁棒，并支持通过 language-based task prompts 进行可控预测。",
+    "summary": "这篇论文关注第一视角下的未来手部姿态预测，本质上是在做人类意图、动作动态和第一视角上下文之间的联合建模。EggHand 的核心不是单纯从视觉帧回归 3D hand pose，而是把 VLA 模型的 action decoder 用来建模手部运动的时间结构，再配合 egocentric video-text encoder 提供面向第一视角的语义上下文。这样它试图解决传统视觉 encoder 在 ego-motion、视角剧烈变化和意图不明确场景下不稳定的问题。对 paper-library 的 embodied AI taste 来说，它的价值在于：它把 egocentric video、language prompt、VLA action dynamics 和 hand pose forecasting 接到一起，是人类第一视角数据走向机器人/AR 辅助和交互预测的一个代表方向；同时也和“如何从人类 egocentric data 学习可用于行动的未来动态/意图表示”高度相关。",
+    "innovations": [
+      "提出 EggHand，一个用于 egocentric 3D hand pose forecasting 的 foundation-model-based 框架，把多模态语义推理与动态运动建模结合起来。",
+      "将 VLA 模型中的 action decoder 用作手部运动 temporal dynamics 的结构化建模模块，而不是只依赖通用视觉特征回归未来姿态。",
+      "引入 egocentric video-text encoder，从大规模第一视角视频中提供 viewpoint-aware context，以提升模型在 ego-motion 和剧烈视角变化下的鲁棒性。",
+      "在不依赖 body pose 或 external tracking 的条件下，联合推理 motion、context 和 high-level intent。",
+      "在 EgoExo4D 上达到新的预测精度 SOTA，并展示了通过 language-based task prompts 进行可控预测的能力。"
+    ],
+    "source_url": "https://arxiv.org/abs/2605.07642",
+    "canonical_url": "https://doi.org/10.48550/arXiv.2605.07642",
+    "pdf_url": "https://arxiv.org/pdf/2605.07642",
+    "added_at": "2026-05-12",
+    "added_at_ts": "2026-05-12T02:31:20+08:00",
+    "sort_timestamp": "2026-05-08",
+    "notes": "根据用户提供的论文截图识别后收录；截图标题看起来像 EgoHand，但 arXiv 原文核实标题为 EggHand。Project page: https://jyoun9.github.io/EggHand （当前页面显示 coming soon）。Comments: CVPR Findings 2026. Subjects: cs.CV。arXiv DOI 当前标注为 pending registration。"
   }
 ]
