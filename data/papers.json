@@ -1048,5 +1048,56 @@
     "added_at_ts": "2026-05-12T02:31:20+08:00",
     "sort_timestamp": "2026-05-08",
     "notes": "根据用户提供的论文截图识别后收录；截图标题看起来像 EgoHand，但 arXiv 原文核实标题为 EggHand。Project page: https://jyoun9.github.io/EggHand （当前页面显示 coming soon）。Comments: CVPR Findings 2026. Subjects: cs.CV。arXiv DOI 当前标注为 pending registration。"
+  },
+  {
+    "id": "future-compatible-diagnosing-dynamic-consistency-world-action-models",
+    "type": "paper",
+    "title": "Is the Future Compatible? Diagnosing Dynamic Consistency in World Action Models",
+    "authors": [
+      "Bo-Kai Ruan",
+      "Teng-Fang Hsiao",
+      "Ling Lo",
+      "Hong-Han Shuai"
+    ],
+    "year": 2026,
+    "date_published": "2026-05-08",
+    "venue": "arXiv Technical Report",
+    "categories": [
+      "Robotics",
+      "World Models",
+      "Evaluation"
+    ],
+    "keywords": [
+      "World Action Models",
+      "WAM",
+      "dynamic consistency",
+      "action-state consistency",
+      "imagined rollouts",
+      "value-free planning",
+      "test-time selection",
+      "consensus strategy",
+      "RoboCasa",
+      "RoboTwin 2.0",
+      "inverse dynamics",
+      "joint prediction",
+      "world model reliability",
+      "background collapse"
+    ],
+    "abstract": "World Action Models（WAMs）通过预测未来观测和动作来生成 imagined rollouts，从而支持决策。但这些“想象的未来”是否可靠仍缺乏充分检验：生成结果只是视觉上合理，还是与其声称建模的动作序列在动态上兼容？本文指出 action-state consistency，即预测动作与诱发状态转移之间的一致性，是评估 WAM 的一个缺失可靠性维度。作者在代表性的 joint-prediction 和 inverse-dynamics 模型上做系统研究，发现 action-state consistency 能在多个任务中稳定地区分成功与失败的 rollout，并呈现出与 learned value estimates 相似的成功/失败趋势，说明它捕捉了超越视觉真实感的、与决策相关的结构。论文还识别出 background collapse 这个重要边界条件：在低动态失败轨迹中，由于静态未来更容易预测，模型可能产生看似一致但实际失败的结果。基于这些发现，作者提出一种 value-free consensus test-time selection 策略，用预测未来之间的一致程度对候选 rollout 排序，在不增加训练或 reward modeling 的情况下提升 RoboCasa 和 RoboTwin 2.0 的成功率。整体而言，本文把 action-state consistency 建立为评估 WAM 可靠性的诊断工具，也作为 value-free planning 的实用信号。",
+    "summary": "这篇论文很适合放在 world model / VLA policy 评估线里。它的问题意识非常直接：WAM 生成的未来不能只看“像不像视频”，还要问这个未来是否与动作序列动态兼容。作者把 action-state consistency 定义为预测动作和状态转移之间的一致性，并证明它能区分成功/失败 rollout，且趋势接近 value estimate，但不需要显式 reward/value 模型。更重要的是，它指出一个容易踩坑的边界条件：background collapse 会让低动态失败轨迹显得很一致，因为静态场景更容易被预测。对你的 taste 来说，这篇提供了一个高信号评估/筛选标准：用动作-状态一致性和 rollout consensus 来判断 world model 是否真正保留了对控制有用的因果动态，而不是只学到视觉重建或静态背景。",
+    "innovations": [
+      "提出 action-state consistency 作为评估 World Action Models 的缺失可靠性轴，关注预测动作与诱发状态转移是否动态兼容。",
+      "系统比较 representative joint-prediction 和 inverse-dynamics models，显示该一致性指标能稳定区分成功与失败 rollout。",
+      "证明 action-state consistency 捕捉的是超越 visual realism 的 decision-relevant structure，并与 learned value estimates 呈现相似成功/失败趋势。",
+      "识别 background collapse 作为重要边界条件：低动态失败轨迹可能因为静态未来更容易预测而产生欺骗性一致性。",
+      "提出 value-free consensus test-time selection，用候选预测未来之间的一致性排序 rollout，在无需额外训练或 reward modeling 的情况下提升 RoboCasa 和 RoboTwin 2.0 成功率。"
+    ],
+    "source_url": "https://arxiv.org/abs/2605.07514",
+    "canonical_url": "https://doi.org/10.48550/arXiv.2605.07514",
+    "pdf_url": "https://arxiv.org/pdf/2605.07514",
+    "added_at": "2026-05-12",
+    "added_at_ts": "2026-05-12T16:24:33+08:00",
+    "sort_timestamp": "2026-05-08",
+    "notes": "用户转发 arXiv PDF 链接后收录，已核实 abs 页。Comments: Technical Report. Subjects: Robotics (cs.RO); Computer Vision and Pattern Recognition (cs.CV)。arXiv DOI 当前标注为 pending registration。"
   }
 ]
