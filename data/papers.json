@@ -1099,5 +1099,59 @@
     "added_at_ts": "2026-05-12T16:24:33+08:00",
     "sort_timestamp": "2026-05-08",
     "notes": "用户转发 arXiv PDF 链接后收录，已核实 abs 页。Comments: Technical Report. Subjects: Robotics (cs.RO); Computer Vision and Pattern Recognition (cs.CV)。arXiv DOI 当前标注为 pending registration。"
+  },
+  {
+    "id": "flow-motion-policy-manipulator-motion-planning-flow-matching-models",
+    "type": "paper",
+    "title": "Flow Motion Policy: Manipulator Motion Planning with Flow Matching Models",
+    "authors": [
+      "Davood Soleymanzadeh",
+      "Xiao Liang",
+      "Minghui Zheng"
+    ],
+    "year": 2026,
+    "date_published": "2026-04-08",
+    "venue": "arXiv",
+    "categories": [
+      "Robotics",
+      "Motion Planning",
+      "Generative Models"
+    ],
+    "keywords": [
+      "Flow Motion Policy",
+      "FMP",
+      "manipulator motion planning",
+      "flow matching",
+      "neural motion planning",
+      "open-loop planner",
+      "end-to-end planning",
+      "point cloud conditioned policy",
+      "best-of-N sampling",
+      "inference-time optimization",
+      "collision-free planning",
+      "multi-modal planning",
+      "sampling-based planners",
+      "PerFAct",
+      "MPNet",
+      "RRT",
+      "GMM",
+      "DMP"
+    ],
+    "abstract": "开放环端到端神经运动规划器最近被用于改进机器人机械臂运动规划：它们可以直接从传感器观测进行规划，而不需要在规划过程中依赖特权 collision checker。然而，许多现有方法在同一工作空间的不同运行中只生成一条路径，也没有充分利用开放环结构进行 inference-time optimization。为解决这一限制，本文提出 Flow Motion Policy（FMP），一个面向机器人机械臂的开放环端到端神经运动规划器。FMP 利用 flow matching 方法的随机生成式建模形式，捕捉规划数据集中固有的多模态性。通过建模可行路径的分布，FMP 支持高效的 inference-time best-of-N sampling：模型生成多条端到端候选路径，在规划后评估其碰撞状态，并执行第一条无碰撞解。作者将 FMP 与代表性的 sampling-based 和 neural motion planning 方法进行比较。实验结果表明，FMP 提升了规划成功率和效率，说明随机生成式策略对端到端运动规划和推理时优化具有实际价值。",
+    "summary": "这篇论文把 flow matching 用到机械臂 motion planning，重点不是做闭环控制，而是把 open-loop end-to-end planner 变成一个能采样多条候选轨迹的随机生成策略。它的关键动机是：真实规划问题往往有多条可行路径，但许多神经规划器在同一输入下只给单一路径，无法通过推理时采样来搜索更好的解。FMP 通过学习可行路径分布，让模型在 inference time 做 best-of-N：生成多个候选、规划后检查碰撞、选择第一条无碰撞路径。对你的 embodied AI / policy taste 来说，这篇值得收录的点在于它把生成式模型的多模态采样能力直接变成规划时优化信号，而不是只追求单次预测；这和 world model/VLA 里用多候选 rollout、consensus、value-free selection 的思路非常接近。",
+    "innovations": [
+      "提出 Flow Motion Policy，一个点云条件、开放环、端到端的机械臂神经运动规划器。",
+      "使用 flow matching 的随机生成式建模来学习可行轨迹分布，从而捕捉 motion planning 数据中的多模态性。",
+      "把开放环策略结构用于 inference-time best-of-N sampling，生成多条候选路径后通过碰撞状态筛选可执行解。",
+      "相较于只输出单一路径的神经规划器，FMP 能利用多候选采样提升规划成功率和效率。",
+      "在代表性的 sampling-based planner 和 neural motion planner 对比中，展示了生成式策略用于端到端规划与推理时优化的有效性。"
+    ],
+    "source_url": "https://arxiv.org/abs/2604.07084",
+    "canonical_url": "https://doi.org/10.48550/arXiv.2604.07084",
+    "pdf_url": "https://arxiv.org/pdf/2604.07084",
+    "added_at": "2026-05-14",
+    "added_at_ts": "2026-05-14T17:05:47+08:00",
+    "sort_timestamp": "2026-04-08",
+    "notes": "根据用户提供的论文截图识别标题后，已核实 arXiv 原文。Experimental evaluation videos: https://zh.engr.tamu.edu/wp-content/uploads/sites/310/2026/03/FMP-Website.mp4 。Subjects: Robotics (cs.RO); Artificial Intelligence (cs.AI)。arXiv DOI 已显示 DataCite DOI。"
   }
 ]
