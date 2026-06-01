@@ -1,5 +1,5 @@
 async function loadPapers() {
-  const response = await fetch('../data/papers.json');
+  const response = await fetch(`../data/papers.json?v=${Date.now()}`, { cache: 'no-store' });
   if (!response.ok) {
     throw new Error(`HTTP ${response.status}`);
   }
