@@ -1,5 +1,68 @@
 [
   {
+    "id": "discovering-and-using-spelke-segments",
+    "type": "paper",
+    "title": "Discovering and using Spelke segments",
+    "authors": [
+      "Rahul Venkatesh",
+      "Klemen Kotar",
+      "Lilian Naing Chen",
+      "Seungwoo Kim",
+      "Luca Thomas Wheeler",
+      "Jared Watrous",
+      "Ashley Xu",
+      "Gia Ancone",
+      "Wanhee Lee",
+      "Honglin Chen",
+      "Daniel Bear",
+      "Stefan Stojanov",
+      "Daniel Yamins"
+    ],
+    "year": 2025,
+    "date_published": "2025-07-21",
+    "venue": "arXiv",
+    "categories": [
+      "World Models",
+      "Physical Reasoning",
+      "Object Segmentation",
+      "Robot Manipulation",
+      "Computer Vision"
+    ],
+    "keywords": [
+      "Spelke segments",
+      "Spelke objects",
+      "SpelkeNet",
+      "SpelkeBench",
+      "physical object understanding",
+      "controllable world model",
+      "motion affordance map",
+      "expected displacement map",
+      "statistical counterfactual probing",
+      "virtual poke",
+      "LRAS",
+      "3DEditBench"
+    ],
+    "abstract": "这篇论文提出 Spelke segments，用发展心理学中的 Spelke objects 概念重新定义视觉分割：与传统按语义类别划分物体不同，Spelke object 指在物理力作用下会可靠地一起运动的一组实体，因此更贴近机器人操作和规划所需的物理对象单位。论文首先构建 SpelkeBench，用自然图像中的 Spelke segment 标注来评估分割算法是否能识别这类物理对象。随后作者提出 SpelkeNet，一类预测未来运动分布的视觉世界模型，用于从图像中提取两种结构：motion affordance map，用来识别在 poke 下可能运动的区域；expected-displacement map，用来估计场景其他部分会如何随 poke 运动。通过 statistical counterfactual probing，模型在高 motion-affordance 区域施加多样 virtual pokes，并利用预期位移图中的相关运动统计聚合出 Spelke segments。实验显示 SpelkeNet 在 SpelkeBench 上超过 SAM 等监督基线，并且在 3DEditBench 物理对象操作中作为分割前端能提升多种现成编辑模型的物理合理性。",
+    "summary": "论文的核心观点是：机器人操作需要的对象分割不应只按语义类别或视觉边界定义，而应按因果运动关系定义。一个杯子、盒盖或被支撑物是否属于同一可操作单元，取决于外力作用下它们是否会一起运动。SpelkeNet 将这个问题转化为可控世界模型问题：给定 RGB 图像和一个局部 virtual poke，模型补全整幅图的光流响应，从中提取运动可供性和预期位移，再通过多次反事实 poke 的运动相关性得到物理对象段。项目页显示，SpelkeNet 在点提示分割任务上取得 AR 0.5411、mIoU 0.6811，优于 SAM2、DINO、CWM 等基线；在 LRAS-3D、LightningDrag、Diffusion Handles、Diffusion as Shader 等对象编辑 pipeline 中，用 SpelkeNet segment 替代 SAM segment 能提升 MSE、PSNR、LPIPS、SSIM 和 edit accuracy 等指标。对具身方向而言，这篇论文的价值在于把 world model 的可控干预能力用于物理对象边界发现，为 action-conditioned perception、affordance、policy evaluator 和物理合理编辑提供了一个很直接的接口。",
+    "innovations": [
+      "将发展心理学中的 Spelke objects 引入计算机视觉，提出基于因果运动关系而非语义类别的 Spelke segments。",
+      "构建 SpelkeBench，用于评估模型是否能识别在物理作用下会一起运动的对象单位。",
+      "提出 SpelkeNet，通过预测 virtual poke 下的未来光流分布来建模物理对象运动关系。",
+      "从 SpelkeNet 中提取 motion affordance map 和 expected-displacement map，分别表示可动区域和局部干预后的全局运动响应。",
+      "设计 statistical counterfactual probing，通过多次反事实 poke 的运动相关性聚合出 Spelke segments。",
+      "展示 Spelke segments 可作为物体编辑/操作 pipeline 的更物理合理分割前端，在 3DEditBench 上提升多种现成方法。"
+    ],
+    "source_url": "https://arxiv.org/abs/2507.16038",
+    "canonical_url": "https://doi.org/10.48550/arXiv.2507.16038",
+    "pdf_url": "https://arxiv.org/pdf/2507.16038",
+    "project_url": "https://neuroailab.github.io/wip_phywm_cvpr/",
+    "code_url": "https://github.com/neuroailab/SpelkeNet",
+    "added_at": "2026-06-04",
+    "added_at_ts": "2026-06-04T12:06:42+08:00",
+    "sort_timestamp": "2025-07-21",
+    "notes": "用户截图标题为 Physical Object Understanding with a Physically Controllable World Model，GitHub README 也标注该 CVPR 2026 网站名；经项目页和 arXiv 核实，当前正式论文标题为 Discovering and using Spelke segments，arXiv:2507.16038，项目页为 https://neuroailab.github.io/wip_phywm_cvpr/。"
+  },
+  {
     "id": "geometric-foundation-models-impact-on-vla-models",
     "type": "paper",
     "title": "Understanding the Impact of Geometric Foundation Models on Vision-Language-Action Models",
