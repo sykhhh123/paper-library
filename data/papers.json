@@ -1,5 +1,57 @@
 [
   {
+    "id": "diffusion-policies-long-context-lengths",
+    "type": "paper",
+    "title": "Training and Evaluating Diffusion Policies with Long Context Lengths",
+    "authors": [
+      "Abhinav Agarwal",
+      "Adam Wei",
+      "Taylan Kargin",
+      "Michael Zeng",
+      "Cole Becker",
+      "Arif Kerem Dayi",
+      "Pablo Parrilo",
+      "Asuman Ozdaglar",
+      "Russ Tedrake"
+    ],
+    "year": 2026,
+    "date_published": "2026-06-15",
+    "venue": "Project Page",
+    "categories": [
+      "Diffusion Policy",
+      "Imitation Learning",
+      "Robot Manipulation",
+      "Long Context",
+      "Robot Learning"
+    ],
+    "keywords": [
+      "diffusion policy",
+      "long context imitation learning",
+      "context length",
+      "RGB observations",
+      "UNet Cross-Attention",
+      "multi-context training",
+      "sample complexity",
+      "memory requirements",
+      "robot manipulation"
+    ],
+    "abstract": "这篇工作研究 diffusion policy 在长上下文模仿学习中的训练与评估。现有从 RGB 观测学习灵巧操作的策略通常只基于较短历史观测做动作决策，因此在需要记忆的任务中容易失败，甚至反复执行相同的失败动作。作者系统评测了从短到长逐步增加 context length 时策略性能的变化，覆盖具有不同局部稳定性、记忆需求和数据规模的任务。结果挑战了此前关于长上下文学习很脆弱的判断：在合适的 conditioning 方法和 denoising backbone（UNet + Cross-Attention）下，单任务策略即使采用直接扩展上下文的方式，也能在常规数据规模下取得较高成功率。进一步地，作者提出一种在多个 context lengths 上联合训练策略的算法，以降低长上下文学习的样本复杂度，并据此重新评估此前针对 long-context imitation learning 的部分方法。",
+    "summary": "该工作把 diffusion policy 的 context length 当作一个核心变量系统研究，而不是默认短历史足够。它的主要结论是：长上下文并不必然导致训练脆弱，关键在于条件注入方式和 denoising backbone 设计；UNet + Cross-Attention 能较好处理长历史信息。论文还提出多上下文长度联合训练，让模型在短/中/长 context 上同时学习，从而降低只训练长 context 时的数据需求。对机器人学习/VLA 调研而言，这篇论文直接关联到 policy memory、长时依赖、历史观测压缩和 diffusion policy scaling，是评估长上下文是否真的必要、如何训练更稳的重要参考。",
+    "innovations": [
+      "系统评测 diffusion policy 在不同 context length 下的性能变化。",
+      "覆盖不同局部稳定性、记忆需求和数据规模的机器人操作任务。",
+      "指出直接扩展上下文并不一定脆弱，合适的 conditioning 和 UNet + Cross-Attention backbone 可保持较好性能。",
+      "提出多 context length 联合训练算法，降低长上下文模仿学习的样本复杂度。",
+      "基于实验结果重新审视此前 long-context imitation learning 的部分解决方案。"
+    ],
+    "source_url": "https://dp-with-long-context.github.io/",
+    "canonical_url": "https://dp-with-long-context.github.io/",
+    "added_at": "2026-06-17",
+    "added_at_ts": "2026-06-17T17:19:31+08:00",
+    "sort_timestamp": "2026-06-15",
+    "notes": "根据用户截图识别标题后，已核实项目页 https://dp-with-long-context.github.io/。截至收录时未找到 arXiv 页面，项目页标注 website under construction，videos/plots/code coming soon。"
+  },
+  {
     "id": "ahead-latent-space-predictive-world-model-dynamic-vla",
     "type": "paper",
     "title": "Intercepting the Future: Latent-Space Predictive World Model for Dynamic VLA Manipulation",
