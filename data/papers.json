@@ -1,5 +1,57 @@
 [
   {
+    "id": "ahead-latent-space-predictive-world-model-dynamic-vla",
+    "type": "paper",
+    "title": "Intercepting the Future: Latent-Space Predictive World Model for Dynamic VLA Manipulation",
+    "authors": [
+      "Shahram Najam Syed",
+      "Arthur Jakobsson",
+      "Haoran Hao",
+      "Jeffrey Ichnowski"
+    ],
+    "year": 2026,
+    "date_published": "2026-06-01",
+    "venue": "arXiv",
+    "categories": [
+      "Vision-Language-Action",
+      "World Models",
+      "Dynamic Manipulation",
+      "Robotics",
+      "Latent Prediction"
+    ],
+    "keywords": [
+      "AHEAD",
+      "Anticipatory Horizon Extrapolation with Adaptive Dynamics",
+      "latent-space predictive world model",
+      "dynamic VLA manipulation",
+      "OpenVLA",
+      "future patch tokens",
+      "optical flow",
+      "velocity and acceleration",
+      "language-and-motion saliency",
+      "adaptive horizon",
+      "uncertainty threshold",
+      "xArm 7"
+    ],
+    "abstract": "这篇论文关注 VLA 在动态操作中的延迟问题：现有 VLA 通常把当前观测直接映射为动作，隐含假设观测到执行之间场景保持静止，因此在目标物体移动时，感知和执行延迟会导致抓取窗口错过。作者提出 AHEAD（Anticipatory Horizon Extrapolation with Adaptive Dynamics），一种 predict-then-act wrapper，在冻结 VLA 外部增加一个 motion-aware latent world model。该小型世界模型在操作视频上训练，在 VLA 特征空间中预测未来 patch tokens，并用 optical flow 得到的 token-level velocity 和 acceleration 作为条件。模型还使用 language-and-motion saliency mask 聚焦任务相关 patch，并以 adaptive horizon 向前 rollout，当预测不确定性超过阈值时停止。随后冻结的 action decoder 接收预测的未来 tokens，而不是当前 tokens。AHEAD 只给冻结 7B OpenVLA 增加 4.9M 参数，在 20 个动态仿真场景中达到 79% 到 97% 成功率，显著高于最强 baseline 的 31% 到 58%；在真实 UFactory xArm 7 上，也在传送带、滚动球、拍击拦截和抛射物接取等任务上明显超过基线。",
+    "summary": "AHEAD 的核心思想是把动态操作中的关键问题从“当前图像如何出动作”改成“动作执行时机器人实际会遇到什么未来状态”。它不改动大 VLA 的主体，而是在冻结 OpenVLA 前面插入一个轻量 latent-space world model：用当前视觉 tokens、光流速度/加速度和语言-运动显著性，预测未来一段时间后的 VLA patch tokens，再把这些未来 tokens 送给原 action decoder。这样可以复用已有 VLA 的动作能力，同时补上动态场景下的时间预测能力。它和像素级视频预测不同，预测发生在 VLA feature space，因此参数量小、与 action decoder 对齐更直接。对 WAM/VLA 调研而言，这篇论文是典型的“冻结 action expert + latent world model 前置补偿”路线，说明即使没有重新训练完整 policy，也可以通过预测未来 latent 来提升动态任务表现。",
+    "innovations": [
+      "提出 AHEAD，一个给冻结 VLA 增加动态预测能力的 predict-then-act wrapper。",
+      "在 VLA feature space 中预测未来 patch tokens，而不是做像素级未来帧生成。",
+      "利用 optical flow 估计每个 token 的 velocity 和 acceleration，使世界模型显式感知运动。",
+      "设计 language-and-motion saliency mask，将预测集中在任务相关的动态区域。",
+      "使用 adaptive horizon 和 uncertainty threshold 决定向前预测多远，避免过度 rollout。",
+      "在冻结 7B OpenVLA 上仅增加 4.9M 参数，却在动态仿真和真实 xArm 7 任务中显著超过基线。"
+    ],
+    "source_url": "https://arxiv.org/abs/2606.02486",
+    "canonical_url": "https://doi.org/10.48550/arXiv.2606.02486",
+    "pdf_url": "https://arxiv.org/pdf/2606.02486",
+    "added_at": "2026-06-17",
+    "added_at_ts": "2026-06-17T15:41:39+08:00",
+    "sort_timestamp": "2026-06-01",
+    "notes": "arXiv:2606.02486v1，提交于 2026-06-01，类别 cs.RO。论文 comments 显示 28 pages, 7 figures, 16 tables。未在 arXiv 页面发现单独项目页。"
+  },
+  {
     "id": "video2sim2real-single-human-video-dexterous-skill",
     "type": "paper",
     "title": "Video2Sim2Real: Full-Stack Autonomous Dexterous Skill Acquisition from a Single Human Video",
