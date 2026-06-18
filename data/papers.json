@@ -1,5 +1,59 @@
 [
   {
+    "id": "do-as-i-do-dexterous-manipulation-data-human-videos",
+    "type": "paper",
+    "title": "Do as I Do: Dexterous Manipulation Data from Everyday Human Videos",
+    "authors": [
+      "Bhawna Paliwal",
+      "Haritheja Etukuru",
+      "William Liang",
+      "Pieter Abbeel",
+      "Nur Muhammad Mahi Shafiullah",
+      "Jitendra Malik"
+    ],
+    "year": 2026,
+    "date_published": "2026-06-17",
+    "venue": "arXiv",
+    "categories": [
+      "Robot Learning",
+      "Dexterous Manipulation",
+      "Learning from Human Video",
+      "Retargeting",
+      "Hand-Object Reconstruction"
+    ],
+    "keywords": [
+      "Do as I Do",
+      "dexterous manipulation",
+      "everyday human videos",
+      "monocular RGB video",
+      "hand-object interaction",
+      "human-to-robot retargeting",
+      "multi-fingered dexterous hands",
+      "foundation vision models",
+      "MuJoCo",
+      "sampling-based optimization"
+    ],
+    "abstract": "这篇论文提出 Do as I Do，目标是从日常人类视频中可扩展地产生机器人灵巧操作数据，尤其面向类人多指灵巧手。人类视频是机器人操作数据的重要来源，但单目 RGB 视频中的手物交互估计困难，再加上 human-to-robot embodiment gap，阻碍了这类大规模视频成为机器人操作数据主源。Do as I Do 从 egocentric 和 exocentric 的野外单目 RGB 视频中重建 hand-object interactions，并将这些交互估计 retarget 为真实世界可执行的多指机器人动作序列，从而把分散的人类视频转化为 robot-complete manipulation data。实验显示，该方法在手物交互估计和从 RGB 视频提取灵巧操作轨迹方面超过此前 SOTA，并基于实验总结了面向实践者采集人类操作数据的 efficacy playbook。",
+    "summary": "Do as I Do 的核心是把“人类看视频学习操作”这个问题落到机器人数据生成链路上：先用视觉基础模型从单目 RGB 视频中估计 4D hand-object interaction，包括通过 guided diffusion 跟踪 3D object，并用 depth estimation 对齐手和物体；再用 sampling-based optimization 在物理仿真中把人手交互 retarget 到多指机器人手和机械臂。论文强调不依赖特定行为假设或固定物体类别，支持多种 in-the-wild 视频来源，包括第一视角、第三视角、互联网视频甚至生成视频。Retargeting 阶段引入 warmup steps、random force perturbation 和 transition reward 等组件，提高对噪声重建轨迹的鲁棒性。对具身方向而言，这篇论文的价值在于把大规模人类视频转化为可执行 robot trajectories，为灵巧手数据瓶颈提供了一条相对实际的路径。",
+    "innovations": [
+      "提出 Do as I Do，将单目 RGB 人类视频重建并 retarget 为多指灵巧手可执行操作数据。",
+      "同时处理 egocentric 和 exocentric in-the-wild 视频，降低对专用采集硬件、深度或 3D 标注的依赖。",
+      "利用视觉基础模型进行 hand-object reconstruction，包括 3D object tracking 和手物深度对齐。",
+      "通过 sampling-based optimization 在物理仿真中完成 human-to-robot retargeting。",
+      "在 retargeting 中加入 warmup、random force perturbation、transition reward 等组件，提高对噪声参考轨迹的鲁棒性。",
+      "给出面向实践的数据采集/使用 playbook，为从人类视频构建灵巧操作数据提供指导。"
+    ],
+    "source_url": "https://arxiv.org/abs/2606.19333",
+    "canonical_url": "https://doi.org/10.48550/arXiv.2606.19333",
+    "pdf_url": "https://arxiv.org/pdf/2606.19333",
+    "project_url": "https://do-as-i-do.com/",
+    "code_url": "https://github.com/malik-group/do-as-i-do",
+    "added_at": "2026-06-18",
+    "added_at_ts": "2026-06-18T12:10:04+08:00",
+    "sort_timestamp": "2026-06-17",
+    "notes": "用户上传 PDF 文件名为 Dexterous Manipulation Data from Everyday Human Videos.pdf；经 PDF 元数据、arXiv 和项目页核实，正式标题为 Do as I Do: Dexterous Manipulation Data from Everyday Human Videos，arXiv:2606.19333v1。"
+  },
+  {
     "id": "repwam-representation-visual-action-tokenizers",
     "type": "paper",
     "title": "RepWAM: World Action Modeling with Representation Visual-Action Tokenizers",
