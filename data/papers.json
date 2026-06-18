@@ -1,5 +1,110 @@
 [
   {
+    "id": "repwam-representation-visual-action-tokenizers",
+    "type": "paper",
+    "title": "RepWAM: World Action Modeling with Representation Visual-Action Tokenizers",
+    "authors": [
+      "Junke Wang",
+      "Qihang Zhang",
+      "Shuai Yang",
+      "Yiming Luo",
+      "Yujun Shen",
+      "Zuxuan Wu",
+      "Yu-Gang Jiang",
+      "Yinghao Xu"
+    ],
+    "year": 2026,
+    "date_published": "2026-06-11",
+    "venue": "arXiv",
+    "categories": [
+      "World Action Models",
+      "Vision-Language-Action",
+      "Robot Learning",
+      "Representation Learning",
+      "Action Tokenization"
+    ],
+    "keywords": [
+      "RepWAM",
+      "World Action Model",
+      "representation visual-action tokenizer",
+      "RepViTok",
+      "semantic visual latents",
+      "latent action tokenizer",
+      "causal diffusion transformer",
+      "RoboTwin 2.0",
+      "Franka dual-arm"
+    ],
+    "abstract": "这篇论文提出 RepWAM，一个以表示为中心的 World Action Model，核心是 representation visual-action tokenizers。现有 WAM 往往继承预训练视频生成模型中的重建导向 tokenizer，这类 tokenizer 能保持视觉保真度，但像素重建本身对学习连接未来预测和机器人控制的指令跟随动态帮助有限。RepWAM 转向语义 visual-action latent space：先训练 representation visual-action tokenizer，把视觉输入映射到对齐的视觉 tokens 和 latent action tokens；再预训练 WAM，在语言指令条件下联合建模未来视觉状态以及连接这些状态的 latent actions，最后适配到真实机器人轨迹进行闭环操作。真实操作和仿真 benchmark 显示，语义 visual-action tokenization 相比重建导向替代方案能提升视觉动态、动作预测和闭环执行。",
+    "summary": "RepWAM 的关键判断是：WAM 的 tokenizer 不应只服务于视频重建，而应服务于机器人控制所需的语义状态变化和动作可执行性。它先用 RepViTok 训练语义视频 tokenizer，通过像素重建与冻结视觉基础模型的语义对齐共同约束视觉 latent；随后在视觉 latent 空间中学习 latent actions，把它们看作视觉状态之间的紧凑转移。基于成对 visual-action latents，RepWAM 训练 causal diffusion transformer，在语言条件下联合预测未来状态和对应 latent actions。项目页报告 RepWAM 在 Franka 双臂真实任务上超过若干 VLA/WAM 基线，在 RoboTwin 2.0 的 50-task suite 上，RepWAM-5B 达到 Easy 89.3、Hard 88.4；将 WAN2.2 VAE 替换为 RepViTok 后，平均成功率在 Easy/Hard 分别提升 8.6/7.1 点。",
+    "innovations": [
+      "提出 representation-centric WAM，将 WAM 的视觉/action tokenizer 从像素重建导向转向语义控制导向。",
+      "提出 RepViTok，通过像素重建和冻结视觉基础模型语义对齐共同训练视觉 latent。",
+      "在语义视觉 latent 空间上学习 latent action tokenizer，把动作表示为视觉状态转移。",
+      "用 causal diffusion transformer 联合建模未来视觉状态和 latent actions。",
+      "在真实 Franka 双臂任务和 RoboTwin 2.0 上验证语义 visual-action tokenization 对闭环执行的收益。"
+    ],
+    "source_url": "https://arxiv.org/abs/2606.13674",
+    "canonical_url": "https://doi.org/10.48550/arXiv.2606.13674",
+    "pdf_url": "https://arxiv.org/pdf/2606.13674",
+    "code_url": "https://github.com/wdrink/RepWAM",
+    "added_at": "2026-06-18",
+    "added_at_ts": "2026-06-18T11:29:19+08:00",
+    "sort_timestamp": "2026-06-13",
+    "notes": "arXiv:2606.13674v2，v1 提交于 2026-06-11，v2 修订于 2026-06-13。GitHub README 标注 inference code and model weights release planned in 2026/06。"
+  },
+  {
+    "id": "eva-executable-video-alignment-inverse-dynamics-rewards",
+    "type": "paper",
+    "title": "EVA: Aligning Video World Models with Executable Robot Actions via Inverse Dynamics Rewards",
+    "authors": [
+      "Ruixiang Wang",
+      "Qingming Liu",
+      "Yueci Deng",
+      "Guiliang Liu",
+      "Zhen Liu",
+      "Kui Jia"
+    ],
+    "year": 2026,
+    "date_published": "2026-03-18",
+    "venue": "arXiv",
+    "categories": [
+      "World Models",
+      "Robot Learning",
+      "Video Generation",
+      "Inverse Dynamics",
+      "Reinforcement Learning"
+    ],
+    "keywords": [
+      "EVA",
+      "Executable Video Alignment",
+      "video world model",
+      "inverse dynamics model",
+      "inverse dynamics rewards",
+      "executability gap",
+      "RoboTwin",
+      "bimanual robot",
+      "RL post-training"
+    ],
+    "abstract": "这篇论文提出 EVA（Executable Video Alignment），用于解决机器人视频世界模型中的 executability gap。视频生成模型可以作为机器人世界模型，根据当前观测和任务指令生成未来视觉 rollout，再由 inverse dynamics model（IDM）把生成帧转换为可执行机器人动作。但现有视频世界模型缺少显式可执行性约束，视觉上连贯的 rollout 仍可能违反刚体和运动学一致性，导致 IDM 解码出不稳定或不可行动作。EVA 将这种视觉生成和物理可执行控制之间的 gap 转化为训练信号：先在真实机器人轨迹上训练 IDM，再把 IDM 作为 reward model，通过生成视频诱导出的动作序列评价视频质量，鼓励速度、加速度、jerk 更平滑，同时惩罚违反 embodiment constraints 的动作。RoboTwin 和真实双臂机器人实验显示，EVA 能减少 embodiment-specific artifacts，并提升下游任务执行成功率。",
+    "summary": "EVA 的核心是把“视频看起来合理”升级为“视频能被机器人动作解释并执行”。它不只用视觉损失或人工筛选评价生成 rollout，而是用 IDM 将生成视频反解成动作序列，再用动作的速度、加速度、jerk 和约束越界情况形成 dense reward，对视频世界模型做 RL post-training。这个 reward 即使在生成视频有明显视觉 artifact 时也有信息量，因为这些 artifact 往往会在 IDM 解码时表现为不稳定或越界动作。项目页展示 EVA 能生成更可执行的 video plans、支持 novel task rollouts，并在真实双臂任务如 plush toy placement、pour water 上验证执行收益。",
+    "innovations": [
+      "提出 executability gap 概念，指出视觉连贯的视频 rollout 不等于机器人可执行。",
+      "提出 EVA，用 inverse dynamics rewards 对视频世界模型进行可执行性对齐。",
+      "将 IDM 从动作解码器复用为 reward model，用生成视频诱导出的动作序列评价 rollout。",
+      "reward 同时鼓励平滑运动并惩罚违反 embodiment constraints 的动作。",
+      "在 RoboTwin 和真实双臂机器人上证明 EVA 可减少 embodiment artifacts 并提升任务执行成功率。"
+    ],
+    "source_url": "https://arxiv.org/abs/2603.17808",
+    "canonical_url": "https://doi.org/10.48550/arXiv.2603.17808",
+    "pdf_url": "https://arxiv.org/pdf/2603.17808",
+    "project_url": "https://eva-project-page.github.io/",
+    "code_url": "https://github.com/RobbinW/EVA",
+    "added_at": "2026-06-18",
+    "added_at_ts": "2026-06-18T11:29:20+08:00",
+    "sort_timestamp": "2026-03-24",
+    "notes": "arXiv:2603.17808v2，v1 提交于 2026-03-18，v2 修订于 2026-03-24。用户提到的 ω-EVA 未在公开检索中核实为正式标题；当前按 arXiv 正式标题 EVA 收录。"
+  },
+  {
     "id": "diffusion-policies-long-context-lengths",
     "type": "paper",
     "title": "Training and Evaluating Diffusion Policies with Long Context Lengths",
