@@ -1,5 +1,66 @@
 [
   {
+    "id": "humanoid-generative-pre-training-zero-shot-motion-tracking-astrabrain-wbc-0-5",
+    "type": "paper",
+    "title": "Humanoid Generative Pre-Training for Zero-Shot Motion Tracking",
+    "authors": [
+      "Zekun Qi",
+      "Xuchuan Chen",
+      "Jilong Wang",
+      "Chenghuai Lin",
+      "Yunrui Lian",
+      "Wenyao Zhang",
+      "Xinqiang Yu",
+      "He Wang",
+      "Li Yi"
+    ],
+    "year": 2026,
+    "date_published": "2026-06-02",
+    "venue": "CVPR 2026",
+    "categories": [
+      "Humanoid Robotics",
+      "Robot Learning",
+      "Whole-Body Control",
+      "Motion Tracking",
+      "Embodied Foundation Models"
+    ],
+    "keywords": [
+      "AstraBrain-WBC 0.5",
+      "Humanoid-GPT",
+      "humanoid generative pre-training",
+      "zero-shot motion tracking",
+      "whole-body control",
+      "causal Transformer",
+      "GPT-style architecture",
+      "2B motion frames",
+      "motion scaling law",
+      "Harmonic Motion Embedding",
+      "DAgger distillation",
+      "Unitree G1",
+      "Galbot"
+    ],
+    "abstract": "这篇 CVPR 2026 论文提出 Humanoid-GPT，也就是银河通用 AstraBrain-WBC 0.5 对应的公开论文/技术成果线索之一。论文目标是解决人形机器人全身运动跟踪中的 agility-generalization trade-off：传统 MLP tracker 往往能跟踪训练分布内的高动态动作，但对未见动作泛化不足；泛化更好的方法又容易牺牲动态能力。作者将全身控制重新组织为 GPT 风格的因果序列建模问题，在 2B 帧重定向运动语料上训练 Transformer tracker，使机器人可以零样本跟踪未见的人类动作和控制任务。",
+    "summary": "Humanoid-GPT 的核心是把人形机器人运动控制扩展到类似语言模型的 scaling regime。系统先聚合 AMASS、LAFAN1、Motion-X++、PHUMA、MotionMillion 等主流 mocap 数据，并加入大规模内部采集数据，经过筛选、分割、增强和 G1 retargeting 后形成 2B 帧运动语料；再用 Harmonic Motion Embedding 衡量和组织运动多样性，按 motion clusters 训练 PPO motion experts；最后通过并行 DAgger 将专家策略蒸馏进一个 GPT-style causal Transformer generalist policy。模型只利用当前和历史状态预测未来 PD targets，符合在线控制不能看未来的部署约束。实验显示，数据规模和模型容量扩大都会带来稳定收益；在 AMASS-test 和真实 Unitree G1 上，Humanoid-GPT 同时提升高动态动作跟踪、零样本泛化和实时部署能力，并能执行未见舞蹈、篮球、协作搬运、翻身起立等复杂动作。",
+    "innovations": [
+      "将人形机器人 whole-body motion tracking 重新定义为 GPT-style causal sequence modeling。",
+      "构建 2B 帧 G1-retargeted motion corpus，把人形运动跟踪训练推进到 billion-scale 数据规模。",
+      "提出 Harmonic Motion Embedding，用于量化运动多样性并支持分布均衡的数据组织和专家训练。",
+      "采用 clustered PPO motion experts + parallel DAgger distillation，将多专家能力压缩为单一 Transformer generalist tracker。",
+      "系统验证数据规模、模型规模和数据多样性对零样本运动跟踪的 scaling law。",
+      "在真实 Unitree G1 上验证未见舞蹈、实时 teleoperation 和高动态动作的 zero-shot transfer。",
+      "开源推理、部署代码和预训练 ONNX checkpoint，便于复现实机/仿真跟踪链路。"
+    ],
+    "source_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Qi_Humanoid_Generative_Pre-Training_for_Zero-Shot_Motion_Tracking_CVPR_2026_paper.html",
+    "canonical_url": "https://arxiv.org/abs/2606.03985",
+    "pdf_url": "https://openaccess.thecvf.com/content/CVPR2026/papers/Qi_Humanoid_Generative_Pre-Training_for_Zero-Shot_Motion_Tracking_CVPR_2026_paper.pdf",
+    "project_url": "https://qizekun.github.io/Humanoid-GPT/",
+    "code_url": "https://github.com/GalaxyGeneralRobotics/Humanoid-GPT/",
+    "added_at": "2026-06-20",
+    "added_at_ts": "2026-06-20T02:23:29+08:00",
+    "sort_timestamp": "2026-06-02",
+    "notes": "AstraBrain-WBC 0.5 是银河通用发布的人形机器人通用小脑/whole-body-control 模型名称；公开论文和代码页对应 Humanoid-GPT。CVPR 正式题名为 Humanoid Generative Pre-Training for Zero-Shot Motion Tracking；arXiv/代码页标题写作 Humanoid-GPT: Scaling Data and Structure for Zero-Shot Motion Tracking，arXiv:2606.03985。"
+  },
+  {
     "id": "sc3-eval-self-consistent-video-generation-robot-policy-evaluation",
     "type": "paper",
     "title": "SC3-Eval: Evaluating Robot Foundation Models via Self-Consistent Video Generation",
