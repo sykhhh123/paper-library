@@ -1,5 +1,66 @@
 [
   {
+    "id": "sc3-eval-self-consistent-video-generation-robot-policy-evaluation",
+    "type": "paper",
+    "title": "SC3-Eval: Evaluating Robot Foundation Models via Self-Consistent Video Generation",
+    "authors": [
+      "Wei-Cheng Tseng",
+      "Gashon Hussein",
+      "Yuzhu Dong",
+      "Allen Z. Ren",
+      "Lucy X. Shi",
+      "XuDong Wang",
+      "Sergey Levine",
+      "Zhaoshuo Li",
+      "Jinwei Gu",
+      "Florian Shkurti",
+      "Ming-Yu Liu",
+      "Quan Vuong"
+    ],
+    "year": 2026,
+    "date_published": "2026-06-17",
+    "venue": "arXiv",
+    "categories": [
+      "Robot Learning",
+      "Robot Foundation Models",
+      "Policy Evaluation",
+      "Video World Models",
+      "Vision-Language-Action Models"
+    ],
+    "keywords": [
+      "SC3-Eval",
+      "self-consistent video generation",
+      "robot foundation models",
+      "policy evaluation",
+      "action-conditioned video world model",
+      "forward-inverse dynamics consistency",
+      "cross-view consistency",
+      "test-time consistency",
+      "early termination",
+      "VLA policy evaluation",
+      "Cosmos3-Nano",
+      "table bussing"
+    ],
+    "abstract": "SC3-Eval 面向机器人基础模型和 VLA policy 的可扩展评估问题。真实机器人 rollout 昂贵、慢且难以大规模重复；action-conditioned video world model 可以在视频空间中模拟 policy rollout，但会遇到 autoregressive drift、多相机视角不一致、以及对 OOD policy 行为泛化不足的问题。论文提出一种 self-consistent video generation recipe，将预训练视频基础模型改造成更可信的 closed-loop policy evaluator，通过 forward-inverse dynamics consistency、cross-view consistency 和 test-time consistency 三类约束，让生成 rollout 更能反映真实机器人执行结果。",
+    "summary": "SC3-Eval 的核心是把视频 world model 从“生成未来画面”推进到“评估机器人 policy”。方法使用统一 video-action transformer：forward mode 根据动作预测未来多视角视频，inverse mode 根据视频恢复动作。因为两种模式共享参数，forward rollout 生成的画面需要能被 inverse mode 解释回原始动作，从而减少 forward-only 模型常见的长期漂移。多视角部分通过 cross-view inpainting 训练模型用其它视角补全被遮住的视角，保持 wrist camera 和 third-person camera 的一致性。推理时，系统在每个 action chunk 后用 inverse dynamics 估计生成视频和目标动作的一致性；当偏差过大时提前终止 imagined rollout，避免 off-manifold 生成继续污染评分。实验在 table bussing 真实机器人任务上评估 7 个 VLA policy checkpoints，报告 closed-loop Pearson correlation 0.929、MMRV 0.119，并优于 Ctrl-World、IRASim、Cosmos-Predict 2.5 等 video-model-based evaluator。",
+    "innovations": [
+      "提出 SC3-Eval，将预训练视频基础模型适配为机器人 policy closed-loop evaluator，而不是只做视频预测。",
+      "用 forward-inverse dynamics consistency 让生成 rollout 与执行动作相互可解释，缓解 autoregressive drift。",
+      "用 cross-view inpainting 显式约束多相机观测一致性，提升 wrist view 重新进入工作区后的场景恢复。",
+      "复用 inverse dynamics error 作为 test-time uncertainty 信号，对不可靠 imagined rollout 做 early termination。",
+      "同时评估 offline open-loop 和 online closed-loop，并按 language following、object lifting、object placing 细分成功标准。",
+      "不仅预测 aggregate success rate，还尝试复现真实 policy 的具体失败模式，支持 checkpoint selection 和 failure diagnosis。"
+    ],
+    "source_url": "https://arxiv.org/abs/2606.18610",
+    "canonical_url": "https://doi.org/10.48550/arXiv.2606.18610",
+    "pdf_url": "https://arxiv.org/pdf/2606.18610",
+    "project_url": "https://weichengtseng.github.io/sc3-eval/",
+    "added_at": "2026-06-20",
+    "added_at_ts": "2026-06-20T02:10:00+08:00",
+    "sort_timestamp": "2026-06-17",
+    "notes": "用户在飞书请求整理 sc3-eval；已按 arXiv:2606.18610 和官方项目页核实。官方项目页源码当前仅包含项目页内锚点，未显示独立 GitHub/code/data 外链，因此未填写 code_url。"
+  },
+  {
     "id": "do-as-i-do-dexterous-manipulation-data-human-videos",
     "type": "paper",
     "title": "Do as I Do: Dexterous Manipulation Data from Everyday Human Videos",
